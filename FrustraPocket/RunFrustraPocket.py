@@ -2,7 +2,9 @@ import os
 import sys
 import os.path as path
 
-def Chains(direc, pdb):
+#---- Functions -----
+
+def Chains(direc, pdb): #Define the chains in the protein structure
 	chains=[]
 	grep='grep \"CHAIN: \" '+direc+'/'+pdb+'.pdb > aux_'+pdb
 	os.system(grep)
@@ -16,12 +18,12 @@ def Chains(direc, pdb):
 	aux.close()
 	rm='rm aux_'+pdb
 	os.system(rm)
-	return chains
+	return chains # a vector with chains
 
 	
-def Fstandlden(dfrustra,dchain,pdb,chain):
+def Fstandlden(dfrustra,dchain,pdb,chain): # create the necessary files for pocket prediction using frustration calculation
 	vect=[]
-	frust=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational_5adens','r')
+	frust=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational_5adens','r') 
 	out=open(dchain+'/'+pdb+'.fstdata','w')
 	for lineade in frust.readlines():
 		spadens=lineade.split()
@@ -37,7 +39,7 @@ def Fstandlden(dfrustra,dchain,pdb,chain):
 	out.close()
 	
 
-def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index threshold (fit) and local density threshold (ldt), pockets directory results, frustraresultdirectory and pdb id
+def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # Pocket Prediction -- (frustration index threshold (fit) and local density threshold (ldt), pockets directory results, frustraresultdirectory and pdb id)
 	vect=[]# empty vector for residues 
 	out=open(dchain+'/'+pdb+'.pockets','w')
 	frust=open(dchain+'/'+pdb+'.fstdata','r')
@@ -114,6 +116,7 @@ mkdir='mkdir '+direc+'/Pockets/'
 os.system(mkdir)
 com='cp '+pipedir+'center_of_mass.py '+direc+'/Pockets/center_of_mass.py'
 os.system(com)
+
 #----- Download PDB file -----
 
 pathPDB=os.getcwd()+'/'+pdb+'.pdb'
@@ -124,7 +127,8 @@ else:
 	wget='wget \'http://www.rcsb.org/pdb/files/'+pdb+'.pdb\' -O '+direc+'/'+pdb+'.pdb'
 	os.system(wget)
 
-#----- FrustrAR -----
+#----- Frustration -----
+
 chains = Chains(direc, pdb)
 dchain=''
 
@@ -137,7 +141,9 @@ for i in range(0,len(chains)):
 	outfst.close()
 	rsc='cd '+dchain+';Rscript frustrar.R'
 	os.system(rsc)
-	#----- Generating Pockets -----
+	
+#----- Generating Pockets -----
+	
 	dfrustra=dchain+'/'+pdb+'_'+chains[i]+'.done/'
 	Fstandlden(dfrustra,dchain,pdb,chains[i])
 	pocket=FrustaPocket (0.13,2.6,dchain,dfrustra,pdb,chains[i])
@@ -189,6 +195,8 @@ allcenter.close()
 outpml.write('zoom all')
 outpml.close()
 
+#----- Docking -----
+
 if len(sys.argv) > 2:
 	awk='cd '+direc+'/;awk \'{if ($1 == "ATOM"){print} if ($1=="TER"){print}}\' '+pdb+'.pdb > '+pdb+'_clean.pdb'
 	os.system(awk)
@@ -222,4 +230,3 @@ if len(sys.argv) > 2:
 		outvina.write(splines[0]+' '+vline[1])
 	center.close()
 	outvina.close()
-
