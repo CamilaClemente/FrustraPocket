@@ -14,7 +14,7 @@ Only for predict protein-ligand and catalytic sites:
 
 To predict protein-ligand and catalytic sites and run a docking with a specific ligand to each pocket predicted.
 	- FrustratometerR: https://github.com/proteinphysiologylab/frustratometeR
-	- MGLTools-1.5.7 (http://mgltools.scripps.edu/downloads)
+	- MGLTools-1.5.7 (http://mgltools.scripps.edu/downloads/mgltools-1-5-7rc1)
 	- Autodock Vina (http://vina.scripps.edu/download.html)
 	- Pymol (sudo apt-get install pymol)
 	
