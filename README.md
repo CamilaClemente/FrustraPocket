@@ -37,9 +37,8 @@ For pocket prediction and docking (the ligand in PDB format must be in the folde
 
 $ python3 RunFrustraPocket.py PDBId Ligand (python3 RunFrustraPocket.py 4new FAD) 
 
-You have to change some path in the RunFrustraPocket.py script:
-- line 116, pipedir="path_to_pipeline_folder"
-- line 208, pythonpath="pythonsh_path_from_MGLTools"
+You have to change a path in the RunFrustraPocket.py script:
+- line 203, pythonpath="pythonsh_path_from_MGLTools"
 
 
 If you have a dataset of the proteins to run in PDB format and you want to use them, you have to define a PATH where the structures are, to do this in RunFrustraPocket.py in line 119 set the pathPDB="path_to_PDB_Files"
