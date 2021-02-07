@@ -30,9 +30,11 @@ The output files:
 The pipeline is code in python3. 
 You can run the pipeline as a follow:
 Only for pocket prediction:
+
 $ python3 RunFrustraPocket.py PDBId (python3 RunFrustraPocket.py 4new)
 
-For pocket prediction and docking:
+For pocket prediction and docking (the ligand in PDB format must be in the folder where the RunFrustraPocket.py is located):
+
 $ python3 RunFrustraPocket.py PDBId Ligand (python3 RunFrustraPocket.py 4new FAD) 
 
 You have to change some path in the RunFrustraPocket.py script:
