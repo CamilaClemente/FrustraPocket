@@ -1,0 +1,666 @@
+MODEL 1
+REMARK VINA RESULT:      -6.4      0.000      0.000
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PG_1  and  O3B_8 
+REMARK    2  A    between atoms: PB_5  and  O3B_8 
+REMARK    3  A    between atoms: PB_5  and  O3A_12 
+REMARK    4  A    between atoms: PA_9  and  O3A_12 
+REMARK    5  A    between atoms: PA_9  and  O5'_13 
+REMARK    6  A    between atoms: O5'_13  and  C5'_14 
+REMARK    7  A    between atoms: C5'_14  and  C4'_15 
+REMARK    8  A    between atoms: C3'_17  and  O3'_18 
+REMARK    9  A    between atoms: C2'_20  and  O2'_21 
+REMARK   10  A    between atoms: C1'_23  and  N9_24 
+ROOT
+HETATM    1  C4' ATP A   1      22.013 -19.554  38.876  1.00 38.54     0.186 C 
+HETATM    2  O4' ATP A   1      22.418 -20.126  40.123  1.00 35.80    -0.326 OA
+HETATM    3  C3' ATP A   1      22.251 -20.433  37.655  1.00 45.15     0.186 C 
+HETATM    4  C2' ATP A   1      23.170 -21.512  38.214  1.00 39.54     0.224 C 
+HETATM    5  C1' ATP A   1      22.918 -21.416  39.724  1.00 25.77     0.159 C 
+ENDROOT
+BRANCH   1   6
+HETATM    6  C5' ATP A   1      21.075 -18.357  39.008  1.00 44.99     0.216 C 
+BRANCH   6   7
+HETATM    7  O5' ATP A   1      21.816 -17.179  38.675  1.00 59.23    -0.287 OA
+BRANCH   7   8
+HETATM    8  PA  ATP A   1      21.537 -16.421  37.279  1.00 48.88     0.417 P 
+HETATM    9  O1A ATP A   1      20.462 -15.410  37.387  1.00 65.01    -0.624 OA
+HETATM   10  O2A ATP A   1      21.029 -17.392  36.254  1.00 52.41    -0.624 OA
+BRANCH   8  11
+HETATM   11  O3A ATP A   1      22.723 -15.708  36.712  1.00 77.63    -0.180 OA
+BRANCH  11  12
+HETATM   12  PB  ATP A   1      23.725 -16.141  35.678  1.00 84.10     0.428 P 
+HETATM   13  O1B ATP A   1      24.199 -17.487  36.130  1.00 85.63    -0.624 OA
+HETATM   14  O2B ATP A   1      24.927 -15.252  35.844  1.00 81.91    -0.624 OA
+BRANCH  12  15
+HETATM   15  O3B ATP A   1      23.117 -16.100  34.192  1.00 90.38    -0.173 OA
+BRANCH  15  16
+HETATM   16  PG  ATP A   1      23.928 -15.730  32.845  1.00 98.59     0.431 P 
+HETATM   17  O1G ATP A   1      24.108 -14.268  32.680  1.00102.11    -0.616 OA
+HETATM   18  O2G ATP A   1      23.186 -16.155  31.632  1.00105.26    -0.616 OA
+HETATM   19  O3G ATP A   1      25.255 -16.359  32.669  1.00 97.69    -0.616 OA
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH  11  12
+ENDBRANCH   8  11
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   1   6
+BRANCH   3  20
+HETATM   20  O3' ATP A   1      22.619 -19.846  36.391  1.00 39.45    -0.390 OA
+ATOM     21  H3' ATP A   1      23.471 -20.020  36.008  1.00  0.00     0.210 HD
+ENDBRANCH   3  20
+BRANCH   5  22
+HETATM   22  N9  ATP A   1      22.698 -22.584  40.615  1.00 17.06    -0.273 N 
+HETATM   23  C8  ATP A   1      23.024 -23.926  40.457  1.00  7.03     0.192 A 
+HETATM   24  N7  ATP A   1      22.608 -24.638  41.584  1.00  2.54    -0.346 N 
+HETATM   25  C5  ATP A   1      21.996 -23.702  42.370  1.00 14.74     0.120 A 
+ATOM     26  H7  ATP A   1      22.733 -25.632  41.778  1.00  0.00     0.167 HD
+HETATM   27  C6  ATP A   1      21.438 -24.123  43.540  1.00 25.29     0.148 A 
+HETATM   28  C4  ATP A   1      22.033 -22.488  41.806  1.00 19.88     0.146 A 
+HETATM   29  N6  ATP A   1      21.477 -25.513  44.006  1.00 32.51    -0.080 NA
+HETATM   30  N1  ATP A   1      20.806 -23.131  44.254  1.00 17.88    -0.339 N 
+HETATM   31  C2  ATP A   1      20.827 -21.863  43.686  1.00 20.53     0.183 A 
+ATOM     32  H1  ATP A   1      20.348 -23.317  45.147  1.00  0.00     0.167 HD
+HETATM   33  N3  ATP A   1      21.402 -21.477  42.493  1.00 11.31    -0.336 N 
+ATOM     34  H3  ATP A   1      21.363 -20.518  42.147  1.00  0.00     0.168 HD
+ENDBRANCH   5  22
+BRANCH   4  35
+HETATM   35  O2' ATP A   1      24.449 -21.503  37.613  1.00 37.25    -0.385 OA
+ATOM     36  H2' ATP A   1      24.795 -22.376  37.475  1.00  0.00     0.210 HD
+ENDBRANCH   4  35
+TORSDOF 10
+ENDMDL
+MODEL 2
+REMARK VINA RESULT:      -6.4      3.005      5.307
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PG_1  and  O3B_8 
+REMARK    2  A    between atoms: PB_5  and  O3B_8 
+REMARK    3  A    between atoms: PB_5  and  O3A_12 
+REMARK    4  A    between atoms: PA_9  and  O3A_12 
+REMARK    5  A    between atoms: PA_9  and  O5'_13 
+REMARK    6  A    between atoms: O5'_13  and  C5'_14 
+REMARK    7  A    between atoms: C5'_14  and  C4'_15 
+REMARK    8  A    between atoms: C3'_17  and  O3'_18 
+REMARK    9  A    between atoms: C2'_20  and  O2'_21 
+REMARK   10  A    between atoms: C1'_23  and  N9_24 
+ROOT
+HETATM    1  C4' ATP A   1      22.206 -21.862  41.552  1.00 38.54     0.186 C 
+HETATM    2  O4' ATP A   1      22.416 -23.098  40.865  1.00 35.80    -0.326 OA
+HETATM    3  C3' ATP A   1      21.708 -21.997  42.985  1.00 45.15     0.186 C 
+HETATM    4  C2' ATP A   1      21.297 -23.462  43.043  1.00 39.54     0.224 C 
+HETATM    5  C1' ATP A   1      22.068 -24.073  41.866  1.00 25.77     0.159 C 
+ENDROOT
+BRANCH   1   6
+HETATM    6  C5' ATP A   1      22.869 -20.655  40.894  1.00 44.99     0.216 C 
+BRANCH   6   7
+HETATM    7  O5' ATP A   1      21.948 -19.561  40.952  1.00 59.23    -0.287 OA
+BRANCH   7   8
+HETATM    8  PA  ATP A   1      22.176 -18.374  42.020  1.00 48.88     0.417 P 
+HETATM    9  O1A ATP A   1      23.072 -18.772  43.128  1.00 65.01    -0.624 OA
+HETATM   10  O2A ATP A   1      20.883 -18.029  42.697  1.00 52.41    -0.624 OA
+BRANCH   8  11
+HETATM   11  O3A ATP A   1      22.759 -17.123  41.442  1.00 77.63    -0.180 OA
+BRANCH  11  12
+HETATM   12  PB  ATP A   1      22.854 -16.653  40.017  1.00 84.10     0.428 P 
+HETATM   13  O1B ATP A   1      23.864 -17.551  39.374  1.00 85.63    -0.624 OA
+HETATM   14  O2B ATP A   1      23.524 -15.307  40.052  1.00 81.91    -0.624 OA
+BRANCH  12  15
+HETATM   15  O3B ATP A   1      21.419 -16.620  39.295  1.00 90.38    -0.173 OA
+BRANCH  15  16
+HETATM   16  PG  ATP A   1      21.160 -16.553  37.702  1.00 98.59     0.431 P 
+HETATM   17  O1G ATP A   1      21.957 -15.489  37.046  1.00102.11    -0.616 OA
+HETATM   18  O2G ATP A   1      19.750 -16.206  37.397  1.00105.26    -0.616 OA
+HETATM   19  O3G ATP A   1      21.377 -17.800  36.937  1.00 97.69    -0.616 OA
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH  11  12
+ENDBRANCH   8  11
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   1   6
+BRANCH   3  20
+HETATM   20  O3' ATP A   1      20.788 -21.034  43.535  1.00 39.45    -0.390 OA
+ATOM     21  H3' ATP A   1      20.536 -21.075  44.450  1.00  0.00     0.210 HD
+ENDBRANCH   3  20
+BRANCH   5  22
+HETATM   22  N9  ATP A   1      22.831 -25.346  41.931  1.00 17.06    -0.273 N 
+HETATM   23  C8  ATP A   1      22.898 -26.320  42.921  1.00  7.03     0.192 A 
+HETATM   24  N7  ATP A   1      23.757 -27.339  42.508  1.00  2.54    -0.346 N 
+HETATM   25  C5  ATP A   1      24.223 -26.920  41.294  1.00 14.74     0.120 A 
+ATOM     26  H7  ATP A   1      23.987 -28.203  43.002  1.00  0.00     0.167 HD
+HETATM   27  C6  ATP A   1      25.137 -27.707  40.659  1.00 25.29     0.148 A 
+HETATM   28  C4  ATP A   1      23.692 -25.742  40.945  1.00 19.88     0.146 A 
+HETATM   29  N6  ATP A   1      25.628 -28.979  41.197  1.00 32.51    -0.080 NA
+HETATM   30  N1  ATP A   1      25.588 -27.198  39.463  1.00 17.88    -0.339 N 
+HETATM   31  C2  ATP A   1      25.054 -25.972  39.082  1.00 20.53     0.183 A 
+ATOM     32  H1  ATP A   1      26.274 -27.691  38.890  1.00  0.00     0.167 HD
+HETATM   33  N3  ATP A   1      24.130 -25.202  39.758  1.00 11.31    -0.336 N 
+ATOM     34  H3  ATP A   1      23.796 -24.305  39.405  1.00  0.00     0.168 HD
+ENDBRANCH   5  22
+BRANCH   4  35
+HETATM   35  O2' ATP A   1      19.911 -23.631  43.265  1.00 37.25    -0.385 OA
+ATOM     36  H2' ATP A   1      19.383 -23.018  42.767  1.00  0.00     0.210 HD
+ENDBRANCH   4  35
+TORSDOF 10
+ENDMDL
+MODEL 3
+REMARK VINA RESULT:      -6.3      1.639      2.747
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PG_1  and  O3B_8 
+REMARK    2  A    between atoms: PB_5  and  O3B_8 
+REMARK    3  A    between atoms: PB_5  and  O3A_12 
+REMARK    4  A    between atoms: PA_9  and  O3A_12 
+REMARK    5  A    between atoms: PA_9  and  O5'_13 
+REMARK    6  A    between atoms: O5'_13  and  C5'_14 
+REMARK    7  A    between atoms: C5'_14  and  C4'_15 
+REMARK    8  A    between atoms: C3'_17  and  O3'_18 
+REMARK    9  A    between atoms: C2'_20  and  O2'_21 
+REMARK   10  A    between atoms: C1'_23  and  N9_24 
+ROOT
+HETATM    1  C4' ATP A   1      21.880 -19.326  38.593  1.00 38.54     0.186 C 
+HETATM    2  O4' ATP A   1      21.152 -20.523  38.874  1.00 35.80    -0.326 OA
+HETATM    3  C3' ATP A   1      22.462 -18.622  39.812  1.00 45.15     0.186 C 
+HETATM    4  C2' ATP A   1      21.741 -19.321  40.957  1.00 39.54     0.224 C 
+HETATM    5  C1' ATP A   1      21.266 -20.627  40.306  1.00 25.77     0.159 C 
+ENDROOT
+BRANCH   1   6
+HETATM    6  C5' ATP A   1      22.282 -19.163  37.129  1.00 44.99     0.216 C 
+BRANCH   6   7
+HETATM    7  O5' ATP A   1      23.034 -17.951  37.012  1.00 59.23    -0.287 OA
+BRANCH   7   8
+HETATM    8  PA  ATP A   1      22.369 -16.656  36.316  1.00 48.88     0.417 P 
+HETATM    9  O1A ATP A   1      22.365 -15.474  37.206  1.00 65.01    -0.624 OA
+HETATM   10  O2A ATP A   1      20.918 -16.908  36.032  1.00 52.41    -0.624 OA
+BRANCH   8  11
+HETATM   11  O3A ATP A   1      23.034 -16.222  35.049  1.00 77.63    -0.180 OA
+BRANCH  11  12
+HETATM   12  PB  ATP A   1      24.475 -16.292  34.625  1.00 84.10     0.428 P 
+HETATM   13  O1B ATP A   1      24.737 -17.742  34.361  1.00 85.63    -0.624 OA
+HETATM   14  O2B ATP A   1      25.298 -15.984  35.845  1.00 81.91    -0.624 OA
+BRANCH  12  15
+HETATM   15  O3B ATP A   1      24.791 -15.311  33.393  1.00 90.38    -0.173 OA
+BRANCH  15  16
+HETATM   16  PG  ATP A   1      23.898 -15.149  32.057  1.00 98.59     0.431 P 
+HETATM   17  O1G ATP A   1      22.769 -14.206  32.244  1.00102.11    -0.616 OA
+HETATM   18  O2G ATP A   1      23.255 -16.431  31.675  1.00105.26    -0.616 OA
+HETATM   19  O3G ATP A   1      24.607 -14.744  30.823  1.00 97.69    -0.616 OA
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH  11  12
+ENDBRANCH   8  11
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   1   6
+BRANCH   3  20
+HETATM   20  O3' ATP A   1      22.535 -17.184  39.862  1.00 39.45    -0.390 OA
+ATOM     21  H3' ATP A   1      21.843 -16.652  39.485  1.00  0.00     0.210 HD
+ENDBRANCH   3  20
+BRANCH   5  22
+HETATM   22  N9  ATP A   1      21.396 -21.971  40.926  1.00 17.06    -0.273 N 
+HETATM   23  C8  ATP A   1      20.729 -22.548  42.001  1.00  7.03     0.192 A 
+HETATM   24  N7  ATP A   1      21.207 -23.845  42.198  1.00  2.54    -0.346 N 
+HETATM   25  C5  ATP A   1      22.190 -23.991  41.259  1.00 14.74     0.120 A 
+ATOM     26  H7  ATP A   1      20.894 -24.529  42.887  1.00  0.00     0.167 HD
+HETATM   27  C6  ATP A   1      22.882 -25.164  41.244  1.00 25.29     0.148 A 
+HETATM   28  C4  ATP A   1      22.319 -22.889  40.509  1.00 19.88     0.146 A 
+HETATM   29  N6  ATP A   1      22.617 -26.277  42.160  1.00 32.51    -0.080 NA
+HETATM   30  N1  ATP A   1      23.882 -25.219  40.299  1.00 17.88    -0.339 N 
+HETATM   31  C2  ATP A   1      24.037 -24.084  39.510  1.00 20.53     0.183 A 
+ATOM     32  H1  ATP A   1      24.473 -26.043  40.184  1.00  0.00     0.167 HD
+HETATM   33  N3  ATP A   1      23.315 -22.910  39.560  1.00 11.31    -0.336 N 
+ATOM     34  H3  ATP A   1      23.504 -22.120  38.943  1.00  0.00     0.168 HD
+ENDBRANCH   5  22
+BRANCH   4  35
+HETATM   35  O2' ATP A   1      20.910 -18.446  41.693  1.00 37.25    -0.385 OA
+ATOM     36  H2' ATP A   1      20.096 -18.249  41.244  1.00  0.00     0.210 HD
+ENDBRANCH   4  35
+TORSDOF 10
+ENDMDL
+MODEL 4
+REMARK VINA RESULT:      -6.3      1.865      3.651
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PG_1  and  O3B_8 
+REMARK    2  A    between atoms: PB_5  and  O3B_8 
+REMARK    3  A    between atoms: PB_5  and  O3A_12 
+REMARK    4  A    between atoms: PA_9  and  O3A_12 
+REMARK    5  A    between atoms: PA_9  and  O5'_13 
+REMARK    6  A    between atoms: O5'_13  and  C5'_14 
+REMARK    7  A    between atoms: C5'_14  and  C4'_15 
+REMARK    8  A    between atoms: C3'_17  and  O3'_18 
+REMARK    9  A    between atoms: C2'_20  and  O2'_21 
+REMARK   10  A    between atoms: C1'_23  and  N9_24 
+ROOT
+HETATM    1  C4' ATP A   1      21.497 -19.089  39.658  1.00 38.54     0.186 C 
+HETATM    2  O4' ATP A   1      21.217 -20.376  40.214  1.00 35.80    -0.326 OA
+HETATM    3  C3' ATP A   1      21.997 -18.050  40.654  1.00 45.15     0.186 C 
+HETATM    4  C2' ATP A   1      21.690 -18.716  41.989  1.00 39.54     0.224 C 
+HETATM    5  C1' ATP A   1      21.554 -20.194  41.602  1.00 25.77     0.159 C 
+ENDROOT
+BRANCH   1   6
+HETATM    6  C5' ATP A   1      21.624 -19.074  38.137  1.00 44.99     0.216 C 
+BRANCH   6   7
+HETATM    7  O5' ATP A   1      22.447 -17.960  37.775  1.00 59.23    -0.287 OA
+BRANCH   7   8
+HETATM    8  PA  ATP A   1      21.817 -16.734  36.937  1.00 48.88     0.417 P 
+HETATM    9  O1A ATP A   1      21.112 -15.760  37.800  1.00 65.01    -0.624 OA
+HETATM   10  O2A ATP A   1      20.755 -17.235  36.003  1.00 52.41    -0.624 OA
+BRANCH   8  11
+HETATM   11  O3A ATP A   1      22.812 -15.946  36.147  1.00 77.63    -0.180 OA
+BRANCH  11  12
+HETATM   12  PB  ATP A   1      24.237 -16.255  35.778  1.00 84.10     0.428 P 
+HETATM   13  O1B ATP A   1      24.560 -15.329  34.648  1.00 85.63    -0.624 OA
+HETATM   14  O2B ATP A   1      24.231 -17.620  35.148  1.00 81.91    -0.624 OA
+BRANCH  12  15
+HETATM   15  O3B ATP A   1      25.224 -16.152  37.042  1.00 90.38    -0.173 OA
+BRANCH  15  16
+HETATM   16  PG  ATP A   1      25.166 -15.031  38.202  1.00 98.59     0.431 P 
+HETATM   17  O1G ATP A   1      24.942 -13.670  37.659  1.00102.11    -0.616 OA
+HETATM   18  O2G ATP A   1      26.455 -14.936  38.929  1.00105.26    -0.616 OA
+HETATM   19  O3G ATP A   1      24.180 -15.239  39.285  1.00 97.69    -0.616 OA
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH  11  12
+ENDBRANCH   8  11
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   1   6
+BRANCH   3  20
+HETATM   20  O3' ATP A   1      21.631 -16.663  40.511  1.00 39.45    -0.390 OA
+ATOM     21  H3' ATP A   1      20.908 -16.302  41.010  1.00  0.00     0.210 HD
+ENDBRANCH   3  20
+BRANCH   5  22
+HETATM   22  N9  ATP A   1      22.174 -21.319  42.349  1.00 17.06    -0.273 N 
+HETATM   23  C8  ATP A   1      22.781 -21.359  43.600  1.00  7.03     0.192 A 
+HETATM   24  N7  ATP A   1      23.207 -22.662  43.864  1.00  2.54    -0.346 N 
+HETATM   25  C5  ATP A   1      22.885 -23.360  42.734  1.00 14.74     0.120 A 
+ATOM     26  H7  ATP A   1      23.657 -23.014  44.709  1.00  0.00     0.167 HD
+HETATM   27  C6  ATP A   1      23.231 -24.677  42.683  1.00 25.29     0.148 A 
+HETATM   28  C4  ATP A   1      22.284 -22.578  41.829  1.00 19.88     0.146 A 
+HETATM   29  N6  ATP A   1      23.908 -25.384  43.775  1.00 32.51    -0.080 NA
+HETATM   30  N1  ATP A   1      22.911 -25.301  41.498  1.00 17.88    -0.339 N 
+HETATM   31  C2  ATP A   1      22.290 -24.507  40.540  1.00 20.53     0.183 A 
+ATOM     32  H1  ATP A   1      23.117 -26.286  41.333  1.00  0.00     0.167 HD
+HETATM   33  N3  ATP A   1      21.958 -23.171  40.630  1.00 11.31    -0.336 N 
+ATOM     34  H3  ATP A   1      21.506 -22.663  39.870  1.00  0.00     0.168 HD
+ENDBRANCH   5  22
+BRANCH   4  35
+HETATM   35  O2' ATP A   1      20.740 -17.997  42.751  1.00 37.25    -0.385 OA
+ATOM     36  H2' ATP A   1      19.928 -18.474  42.867  1.00  0.00     0.210 HD
+ENDBRANCH   4  35
+TORSDOF 10
+ENDMDL
+MODEL 5
+REMARK VINA RESULT:      -6.3      4.612      8.494
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PG_1  and  O3B_8 
+REMARK    2  A    between atoms: PB_5  and  O3B_8 
+REMARK    3  A    between atoms: PB_5  and  O3A_12 
+REMARK    4  A    between atoms: PA_9  and  O3A_12 
+REMARK    5  A    between atoms: PA_9  and  O5'_13 
+REMARK    6  A    between atoms: O5'_13  and  C5'_14 
+REMARK    7  A    between atoms: C5'_14  and  C4'_15 
+REMARK    8  A    between atoms: C3'_17  and  O3'_18 
+REMARK    9  A    between atoms: C2'_20  and  O2'_21 
+REMARK   10  A    between atoms: C1'_23  and  N9_24 
+ROOT
+HETATM    1  C4' ATP A   1      22.367 -17.827  39.420  1.00 38.54     0.186 C 
+HETATM    2  O4' ATP A   1      23.681 -18.129  38.945  1.00 35.80    -0.326 OA
+HETATM    3  C3' ATP A   1      21.410 -17.283  38.366  1.00 45.15     0.186 C 
+HETATM    4  C2' ATP A   1      22.355 -16.949  37.220  1.00 39.54     0.224 C 
+HETATM    5  C1' ATP A   1      23.591 -17.796  37.547  1.00 25.77     0.159 C 
+ENDROOT
+BRANCH   1   6
+HETATM    6  C5' ATP A   1      22.027 -18.450  40.771  1.00 44.99     0.216 C 
+BRANCH   6   7
+HETATM    7  O5' ATP A   1      21.165 -19.568  40.535  1.00 59.23    -0.287 OA
+BRANCH   7   8
+HETATM    8  PA  ATP A   1      21.797 -21.030  40.278  1.00 48.88     0.417 P 
+HETATM    9  O1A ATP A   1      23.224 -21.106  40.659  1.00 65.01    -0.624 OA
+HETATM   10  O2A ATP A   1      21.790 -21.347  38.811  1.00 52.41    -0.624 OA
+BRANCH   8  11
+HETATM   11  O3A ATP A   1      21.110 -22.140  41.008  1.00 77.63    -0.180 OA
+BRANCH  11  12
+HETATM   12  PB  ATP A   1      21.087 -22.483  42.472  1.00 84.10     0.428 P 
+HETATM   13  O1B ATP A   1      19.771 -23.160  42.696  1.00 85.63    -0.624 OA
+HETATM   14  O2B ATP A   1      20.965 -21.182  43.216  1.00 81.91    -0.624 OA
+BRANCH  12  15
+HETATM   15  O3B ATP A   1      22.373 -23.339  42.912  1.00 90.38    -0.173 OA
+BRANCH  15  16
+HETATM   16  PG  ATP A   1      22.503 -24.948  42.866  1.00 98.59     0.431 P 
+HETATM   17  O1G ATP A   1      23.877 -25.411  43.177  1.00102.11    -0.616 OA
+HETATM   18  O2G ATP A   1      22.231 -25.475  41.506  1.00105.26    -0.616 OA
+HETATM   19  O3G ATP A   1      21.576 -25.719  43.721  1.00 97.69    -0.616 OA
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH  11  12
+ENDBRANCH   8  11
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   1   6
+BRANCH   3  20
+HETATM   20  O3' ATP A   1      20.423 -16.292  38.716  1.00 39.45    -0.390 OA
+ATOM     21  H3' ATP A   1      20.013 -16.302  39.573  1.00  0.00     0.210 HD
+ENDBRANCH   3  20
+BRANCH   5  22
+HETATM   22  N9  ATP A   1      24.329 -18.623  36.557  1.00 17.06    -0.273 N 
+HETATM   23  C8  ATP A   1      24.723 -18.349  35.252  1.00  7.03     0.192 A 
+HETATM   24  N7  ATP A   1      25.400 -19.454  34.733  1.00  2.54    -0.346 N 
+HETATM   25  C5  ATP A   1      25.348 -20.384  35.733  1.00 14.74     0.120 A 
+ATOM     26  H7  ATP A   1      25.835 -19.546  33.815  1.00  0.00     0.167 HD
+HETATM   27  C6  ATP A   1      25.899 -21.607  35.489  1.00 25.29     0.148 A 
+HETATM   28  C4  ATP A   1      24.711 -19.911  36.811  1.00 19.88     0.146 A 
+HETATM   29  N6  ATP A   1      26.555 -21.968  34.229  1.00 32.51    -0.080 NA
+HETATM   30  N1  ATP A   1      25.771 -22.502  36.527  1.00 17.88    -0.339 N 
+HETATM   31  C2  ATP A   1      25.108 -22.034  37.657  1.00 20.53     0.183 A 
+ATOM     32  H1  ATP A   1      26.140 -23.451  36.471  1.00  0.00     0.167 HD
+HETATM   33  N3  ATP A   1      24.560 -20.784  37.863  1.00 11.31    -0.336 N 
+ATOM     34  H3  ATP A   1      24.082 -20.528  38.727  1.00  0.00     0.168 HD
+ENDBRANCH   5  22
+BRANCH   4  35
+HETATM   35  O2' ATP A   1      22.387 -15.566  36.926  1.00 37.25    -0.385 OA
+ATOM     36  H2' ATP A   1      21.735 -15.073  37.410  1.00  0.00     0.210 HD
+ENDBRANCH   4  35
+TORSDOF 10
+ENDMDL
+MODEL 6
+REMARK VINA RESULT:      -6.2      3.012      5.427
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PG_1  and  O3B_8 
+REMARK    2  A    between atoms: PB_5  and  O3B_8 
+REMARK    3  A    between atoms: PB_5  and  O3A_12 
+REMARK    4  A    between atoms: PA_9  and  O3A_12 
+REMARK    5  A    between atoms: PA_9  and  O5'_13 
+REMARK    6  A    between atoms: O5'_13  and  C5'_14 
+REMARK    7  A    between atoms: C5'_14  and  C4'_15 
+REMARK    8  A    between atoms: C3'_17  and  O3'_18 
+REMARK    9  A    between atoms: C2'_20  and  O2'_21 
+REMARK   10  A    between atoms: C1'_23  and  N9_24 
+ROOT
+HETATM    1  C4' ATP A   1      21.698 -20.203  42.135  1.00 38.54     0.186 C 
+HETATM    2  O4' ATP A   1      22.032 -20.173  40.745  1.00 35.80    -0.326 OA
+HETATM    3  C3' ATP A   1      21.574 -21.597  42.738  1.00 45.15     0.186 C 
+HETATM    4  C2' ATP A   1      21.536 -22.479  41.497  1.00 39.54     0.224 C 
+HETATM    5  C1' ATP A   1      22.149 -21.571  40.423  1.00 25.77     0.159 C 
+ENDROOT
+BRANCH   1   6
+HETATM    6  C5' ATP A   1      21.902 -18.876  42.860  1.00 44.99     0.216 C 
+BRANCH   6   7
+HETATM    7  O5' ATP A   1      21.679 -17.822  41.918  1.00 59.23    -0.287 OA
+BRANCH   7   8
+HETATM    8  PA  ATP A   1      22.370 -16.381  42.145  1.00 48.88     0.417 P 
+HETATM    9  O1A ATP A   1      23.148 -16.317  43.402  1.00 65.01    -0.624 OA
+HETATM   10  O2A ATP A   1      21.320 -15.322  42.307  1.00 52.41    -0.624 OA
+BRANCH   8  11
+HETATM   11  O3A ATP A   1      23.305 -15.963  41.056  1.00 77.63    -0.180 OA
+BRANCH  11  12
+HETATM   12  PB  ATP A   1      23.261 -16.218  39.574  1.00 84.10     0.428 P 
+HETATM   13  O1B ATP A   1      23.875 -17.571  39.390  1.00 85.63    -0.624 OA
+HETATM   14  O2B ATP A   1      24.249 -15.275  38.946  1.00 81.91    -0.624 OA
+BRANCH  12  15
+HETATM   15  O3B ATP A   1      21.778 -16.060  38.978  1.00 90.38    -0.173 OA
+BRANCH  15  16
+HETATM   16  PG  ATP A   1      21.328 -16.371  37.458  1.00 98.59     0.431 P 
+HETATM   17  O1G ATP A   1      20.000 -15.798  37.136  1.00102.11    -0.616 OA
+HETATM   18  O2G ATP A   1      21.173 -17.828  37.226  1.00105.26    -0.616 OA
+HETATM   19  O3G ATP A   1      22.259 -15.953  36.387  1.00 97.69    -0.616 OA
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH  11  12
+ENDBRANCH   8  11
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   1   6
+BRANCH   3  20
+HETATM   20  O3' ATP A   1      20.600 -21.865  43.766  1.00 39.45    -0.390 OA
+ATOM     21  H3' ATP A   1      20.150 -22.701  43.797  1.00  0.00     0.210 HD
+ENDBRANCH   3  20
+BRANCH   5  22
+HETATM   22  N9  ATP A   1      23.181 -22.005  39.446  1.00 17.06    -0.273 N 
+HETATM   23  C8  ATP A   1      23.991 -23.135  39.415  1.00  7.03     0.192 A 
+HETATM   24  N7  ATP A   1      24.802 -23.090  38.279  1.00  2.54    -0.346 N 
+HETATM   25  C5  ATP A   1      24.488 -21.901  37.684  1.00 14.74     0.120 A 
+ATOM     26  H7  ATP A   1      25.477 -23.788  37.965  1.00  0.00     0.167 HD
+HETATM   27  C6  ATP A   1      25.171 -21.557  36.556  1.00 25.29     0.148 A 
+HETATM   28  C4  ATP A   1      23.540 -21.246  38.366  1.00 19.88     0.146 A 
+HETATM   29  N6  ATP A   1      26.202 -22.398  35.941  1.00 32.51    -0.080 NA
+HETATM   30  N1  ATP A   1      24.827 -20.328  36.039  1.00 17.88    -0.339 N 
+HETATM   31  C2  ATP A   1      23.848 -19.627  36.734  1.00 20.53     0.183 A 
+ATOM     32  H1  ATP A   1      25.265 -19.955  35.197  1.00  0.00     0.167 HD
+HETATM   33  N3  ATP A   1      23.181 -20.010  37.879  1.00 11.31    -0.336 N 
+ATOM     34  H3  ATP A   1      22.477 -19.425  38.329  1.00  0.00     0.168 HD
+ENDBRANCH   5  22
+BRANCH   4  35
+HETATM   35  O2' ATP A   1      20.311 -23.170  41.357  1.00 37.25    -0.385 OA
+ATOM     36  H2' ATP A   1      19.557 -22.597  41.434  1.00  0.00     0.210 HD
+ENDBRANCH   4  35
+TORSDOF 10
+ENDMDL
+MODEL 7
+REMARK VINA RESULT:      -6.2      1.979      3.622
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PG_1  and  O3B_8 
+REMARK    2  A    between atoms: PB_5  and  O3B_8 
+REMARK    3  A    between atoms: PB_5  and  O3A_12 
+REMARK    4  A    between atoms: PA_9  and  O3A_12 
+REMARK    5  A    between atoms: PA_9  and  O5'_13 
+REMARK    6  A    between atoms: O5'_13  and  C5'_14 
+REMARK    7  A    between atoms: C5'_14  and  C4'_15 
+REMARK    8  A    between atoms: C3'_17  and  O3'_18 
+REMARK    9  A    between atoms: C2'_20  and  O2'_21 
+REMARK   10  A    between atoms: C1'_23  and  N9_24 
+ROOT
+HETATM    1  C4' ATP A   1      22.398 -18.359  40.825  1.00 38.54     0.186 C 
+HETATM    2  O4' ATP A   1      23.038 -19.485  41.429  1.00 35.80    -0.326 OA
+HETATM    3  C3' ATP A   1      21.120 -18.677  40.059  1.00 45.15     0.186 C 
+HETATM    4  C2' ATP A   1      21.183 -20.194  39.950  1.00 39.54     0.224 C 
+HETATM    5  C1' ATP A   1      22.161 -20.570  41.071  1.00 25.77     0.159 C 
+ENDROOT
+BRANCH   1   6
+HETATM    6  C5' ATP A   1      22.865 -17.008  41.361  1.00 44.99     0.216 C 
+BRANCH   6   7
+HETATM    7  O5' ATP A   1      22.810 -16.066  40.285  1.00 59.23    -0.287 OA
+BRANCH   7   8
+HETATM    8  PA  ATP A   1      24.177 -15.518  39.625  1.00 48.88     0.417 P 
+HETATM    9  O1A ATP A   1      25.350 -16.347  39.980  1.00 65.01    -0.624 OA
+HETATM   10  O2A ATP A   1      24.507 -14.160  40.169  1.00 52.41    -0.624 OA
+BRANCH   8  11
+HETATM   11  O3A ATP A   1      24.158 -15.442  38.132  1.00 77.63    -0.180 OA
+BRANCH  11  12
+HETATM   12  PB  ATP A   1      23.315 -16.172  37.123  1.00 84.10     0.428 P 
+HETATM   13  O1B ATP A   1      23.910 -15.831  35.793  1.00 85.63    -0.624 OA
+HETATM   14  O2B ATP A   1      21.973 -15.493  37.113  1.00 81.91    -0.624 OA
+BRANCH  12  15
+HETATM   15  O3B ATP A   1      23.219 -17.744  37.440  1.00 90.38    -0.173 OA
+BRANCH  15  16
+HETATM   16  PG  ATP A   1      24.342 -18.851  37.094  1.00 98.59     0.431 P 
+HETATM   17  O1G ATP A   1      24.411 -19.150  35.644  1.00102.11    -0.616 OA
+HETATM   18  O2G ATP A   1      24.031 -20.156  37.730  1.00105.26    -0.616 OA
+HETATM   19  O3G ATP A   1      25.721 -18.571  37.551  1.00 97.69    -0.616 OA
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH  11  12
+ENDBRANCH   8  11
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   1   6
+BRANCH   3  20
+HETATM   20  O3' ATP A   1      20.782 -17.945  38.864  1.00 39.45    -0.390 OA
+ATOM     21  H3' ATP A   1      20.030 -17.364  38.852  1.00  0.00     0.210 HD
+ENDBRANCH   3  20
+BRANCH   5  22
+HETATM   22  N9  ATP A   1      21.943 -21.674  42.041  1.00 17.06    -0.273 N 
+HETATM   23  C8  ATP A   1      21.570 -21.651  43.381  1.00  7.03     0.192 A 
+HETATM   24  N7  ATP A   1      21.493 -22.960  43.860  1.00  2.54    -0.346 N 
+HETATM   25  C5  ATP A   1      21.872 -23.734  42.799  1.00 14.74     0.120 A 
+ATOM     26  H7  ATP A   1      21.216 -23.270  44.792  1.00  0.00     0.167 HD
+HETATM   27  C6  ATP A   1      21.938 -25.081  42.988  1.00 25.29     0.148 A 
+HETATM   28  C4  ATP A   1      22.149 -22.987  41.723  1.00 19.88     0.146 A 
+HETATM   29  N6  ATP A   1      21.608 -25.742  44.255  1.00 32.51    -0.080 NA
+HETATM   30  N1  ATP A   1      22.367 -25.787  41.887  1.00 17.88    -0.339 N 
+HETATM   31  C2  ATP A   1      22.666 -25.032  40.758  1.00 20.53     0.183 A 
+ATOM     32  H1  ATP A   1      22.459 -26.803  41.899  1.00  0.00     0.167 HD
+HETATM   33  N3  ATP A   1      22.588 -23.663  40.607  1.00 11.31    -0.336 N 
+ATOM     34  H3  ATP A   1      22.836 -23.190  39.739  1.00  0.00     0.168 HD
+ENDBRANCH   5  22
+BRANCH   4  35
+HETATM   35  O2' ATP A   1      21.290 -20.641  38.613  1.00 37.25    -0.385 OA
+ATOM     36  H2' ATP A   1      21.349 -21.586  38.546  1.00  0.00     0.210 HD
+ENDBRANCH   4  35
+TORSDOF 10
+ENDMDL
+MODEL 8
+REMARK VINA RESULT:      -6.0      2.234      4.367
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PG_1  and  O3B_8 
+REMARK    2  A    between atoms: PB_5  and  O3B_8 
+REMARK    3  A    between atoms: PB_5  and  O3A_12 
+REMARK    4  A    between atoms: PA_9  and  O3A_12 
+REMARK    5  A    between atoms: PA_9  and  O5'_13 
+REMARK    6  A    between atoms: O5'_13  and  C5'_14 
+REMARK    7  A    between atoms: C5'_14  and  C4'_15 
+REMARK    8  A    between atoms: C3'_17  and  O3'_18 
+REMARK    9  A    between atoms: C2'_20  and  O2'_21 
+REMARK   10  A    between atoms: C1'_23  and  N9_24 
+ROOT
+HETATM    1  C4' ATP A   1      21.532 -21.306  41.279  1.00 38.54     0.186 C 
+HETATM    2  O4' ATP A   1      21.517 -22.724  41.096  1.00 35.80    -0.326 OA
+HETATM    3  C3' ATP A   1      21.538 -20.842  42.730  1.00 45.15     0.186 C 
+HETATM    4  C2' ATP A   1      21.185 -22.122  43.475  1.00 39.54     0.224 C 
+HETATM    5  C1' ATP A   1      21.530 -23.212  42.451  1.00 25.77     0.159 C 
+ENDROOT
+BRANCH   1   6
+HETATM    6  C5' ATP A   1      21.928 -20.516  40.035  1.00 44.99     0.216 C 
+BRANCH   6   7
+HETATM    7  O5' ATP A   1      21.234 -19.264  40.070  1.00 59.23    -0.287 OA
+BRANCH   7   8
+HETATM    8  PA  ATP A   1      22.067 -17.883  40.067  1.00 48.88     0.417 P 
+HETATM    9  O1A ATP A   1      23.444 -18.051  39.553  1.00 65.01    -0.624 OA
+HETATM   10  O2A ATP A   1      22.256 -17.389  41.471  1.00 52.41    -0.624 OA
+BRANCH   8  11
+HETATM   11  O3A ATP A   1      21.451 -16.788  39.256  1.00 77.63    -0.180 OA
+BRANCH  11  12
+HETATM   12  PB  ATP A   1      21.285 -16.644  37.768  1.00 84.10     0.428 P 
+HETATM   13  O1B ATP A   1      19.867 -16.211  37.571  1.00 85.63    -0.624 OA
+HETATM   14  O2B ATP A   1      21.331 -18.034  37.195  1.00 81.91    -0.624 OA
+BRANCH  12  15
+HETATM   15  O3B ATP A   1      22.388 -15.667  37.129  1.00 90.38    -0.173 OA
+BRANCH  15  16
+HETATM   16  PG  ATP A   1      23.606 -16.111  36.166  1.00 98.59     0.431 P 
+HETATM   17  O1G ATP A   1      24.740 -15.158  36.216  1.00102.11    -0.616 OA
+HETATM   18  O2G ATP A   1      23.193 -16.126  34.741  1.00105.26    -0.616 OA
+HETATM   19  O3G ATP A   1      24.161 -17.466  36.373  1.00 97.69    -0.616 OA
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH  11  12
+ENDBRANCH   8  11
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   1   6
+BRANCH   3  20
+HETATM   20  O3' ATP A   1      20.841 -19.642  43.117  1.00 39.45    -0.390 OA
+ATOM     21  H3' ATP A   1      20.955 -18.838  42.624  1.00  0.00     0.210 HD
+ENDBRANCH   3  20
+BRANCH   5  22
+HETATM   22  N9  ATP A   1      22.285 -24.452  42.766  1.00 17.06    -0.273 N 
+HETATM   23  C8  ATP A   1      22.524 -25.092  43.978  1.00  7.03     0.192 A 
+HETATM   24  N7  ATP A   1      23.290 -26.237  43.751  1.00  2.54    -0.346 N 
+HETATM   25  C5  ATP A   1      23.532 -26.223  42.406  1.00 14.74     0.120 A 
+ATOM     26  H7  ATP A   1      23.599 -26.928  44.435  1.00  0.00     0.167 HD
+HETATM   27  C6  ATP A   1      24.312 -27.215  41.892  1.00 25.29     0.148 A 
+HETATM   28  C4  ATP A   1      22.953 -25.171  41.814  1.00 19.88     0.146 A 
+HETATM   29  N6  ATP A   1      24.885 -28.299  42.697  1.00 32.51    -0.080 NA
+HETATM   30  N1  ATP A   1      24.543 -27.110  40.540  1.00 17.88    -0.339 N 
+HETATM   31  C2  ATP A   1      23.956 -26.021  39.904  1.00 20.53     0.183 A 
+ATOM     32  H1  ATP A   1      25.112 -27.790  40.034  1.00  0.00     0.167 HD
+HETATM   33  N3  ATP A   1      23.172 -25.033  40.463  1.00 11.31    -0.336 N 
+ATOM     34  H3  ATP A   1      22.786 -24.262  39.918  1.00  0.00     0.168 HD
+ENDBRANCH   5  22
+BRANCH   4  35
+HETATM   35  O2' ATP A   1      19.952 -22.031  44.161  1.00 37.25    -0.385 OA
+ATOM     36  H2' ATP A   1      19.687 -21.133  44.320  1.00  0.00     0.210 HD
+ENDBRANCH   4  35
+TORSDOF 10
+ENDMDL
+MODEL 9
+REMARK VINA RESULT:      -6.0     18.592     20.855
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: PG_1  and  O3B_8 
+REMARK    2  A    between atoms: PB_5  and  O3B_8 
+REMARK    3  A    between atoms: PB_5  and  O3A_12 
+REMARK    4  A    between atoms: PA_9  and  O3A_12 
+REMARK    5  A    between atoms: PA_9  and  O5'_13 
+REMARK    6  A    between atoms: O5'_13  and  C5'_14 
+REMARK    7  A    between atoms: C5'_14  and  C4'_15 
+REMARK    8  A    between atoms: C3'_17  and  O3'_18 
+REMARK    9  A    between atoms: C2'_20  and  O2'_21 
+REMARK   10  A    between atoms: C1'_23  and  N9_24 
+ROOT
+HETATM    1  C4' ATP A   1      22.913 -33.509  26.696  1.00 38.54     0.186 C 
+HETATM    2  O4' ATP A   1      22.713 -33.913  25.339  1.00 35.80    -0.326 OA
+HETATM    3  C3' ATP A   1      21.778 -32.690  27.299  1.00 45.15     0.186 C 
+HETATM    4  C2' ATP A   1      20.963 -32.320  26.067  1.00 39.54     0.224 C 
+HETATM    5  C1' ATP A   1      21.415 -33.366  25.040  1.00 25.77     0.159 C 
+ENDROOT
+BRANCH   1   6
+HETATM    6  C5' ATP A   1      24.014 -34.274  27.424  1.00 44.99     0.216 C 
+BRANCH   6   7
+HETATM    7  O5' ATP A   1      24.524 -33.429  28.461  1.00 59.23    -0.287 OA
+BRANCH   7   8
+HETATM    8  PA  ATP A   1      24.242 -33.795  30.007  1.00 48.88     0.417 P 
+HETATM    9  O1A ATP A   1      23.232 -34.865  30.162  1.00 65.01    -0.624 OA
+HETATM   10  O2A ATP A   1      23.644 -32.618  30.719  1.00 52.41    -0.624 OA
+BRANCH   8  11
+HETATM   11  O3A ATP A   1      25.448 -34.248  30.768  1.00 77.63    -0.180 OA
+BRANCH  11  12
+HETATM   12  PB  ATP A   1      26.295 -35.482  30.618  1.00 84.10     0.428 P 
+HETATM   13  O1B ATP A   1      25.545 -36.562  31.333  1.00 85.63    -0.624 OA
+HETATM   14  O2B ATP A   1      27.522 -35.265  31.459  1.00 81.91    -0.624 OA
+BRANCH  12  15
+HETATM   15  O3B ATP A   1      26.637 -35.797  29.080  1.00 90.38    -0.173 OA
+BRANCH  15  16
+HETATM   16  PG  ATP A   1      27.854 -36.716  28.549  1.00 98.59     0.431 P 
+HETATM   17  O1G ATP A   1      28.840 -35.941  27.758  1.00102.11    -0.616 OA
+HETATM   18  O2G ATP A   1      27.373 -37.768  27.620  1.00105.26    -0.616 OA
+HETATM   19  O3G ATP A   1      28.609 -37.479  29.565  1.00 97.69    -0.616 OA
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH  11  12
+ENDBRANCH   8  11
+ENDBRANCH   7   8
+ENDBRANCH   6   7
+ENDBRANCH   1   6
+BRANCH   3  20
+HETATM   20  O3' ATP A   1      22.057 -31.638  28.243  1.00 39.45    -0.390 OA
+ATOM     21  H3' ATP A   1      22.515 -30.852  27.969  1.00  0.00     0.210 HD
+ENDBRANCH   3  20
+BRANCH   5  22
+HETATM   22  N9  ATP A   1      20.495 -34.129  24.157  1.00 17.06    -0.273 N 
+HETATM   23  C8  ATP A   1      19.136 -33.976  23.906  1.00  7.03     0.192 A 
+HETATM   24  N7  ATP A   1      18.725 -34.945  22.988  1.00  2.54    -0.346 N 
+HETATM   25  C5  ATP A   1      19.848 -35.687  22.751  1.00 14.74     0.120 A 
+ATOM     26  H7  ATP A   1      17.796 -35.071  22.585  1.00  0.00     0.167 HD
+HETATM   27  C6  ATP A   1      19.736 -36.755  21.913  1.00 25.29     0.148 A 
+HETATM   28  C4  ATP A   1      20.897 -35.223  23.441  1.00 19.88     0.146 A 
+HETATM   29  N6  ATP A   1      18.490 -37.137  21.242  1.00 32.51    -0.080 NA
+HETATM   30  N1  ATP A   1      20.899 -37.476  21.758  1.00 17.88    -0.339 N 
+HETATM   31  C2  ATP A   1      22.001 -37.015  22.469  1.00 20.53     0.183 A 
+ATOM     32  H1  ATP A   1      20.948 -38.299  21.157  1.00  0.00     0.167 HD
+HETATM   33  N3  ATP A   1      22.072 -35.926  23.313  1.00 11.31    -0.336 N 
+ATOM     34  H3  ATP A   1      22.927 -35.663  23.803  1.00  0.00     0.168 HD
+ENDBRANCH   5  22
+BRANCH   4  35
+HETATM   35  O2' ATP A   1      20.935 -30.926  25.830  1.00 37.25    -0.385 OA
+ATOM     36  H2' ATP A   1      20.059 -30.563  25.886  1.00  0.00     0.210 HD
+ENDBRANCH   4  35
+TORSDOF 10
+ENDMDL
