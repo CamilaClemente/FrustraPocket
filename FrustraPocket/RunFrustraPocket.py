@@ -143,7 +143,7 @@ for i in range(0,len(chains)):
 	pocket=FrustaPocket (0.13,2.6,dchain,dfrustra,pdb,chains[i])
 
 	if pocket < 2:
-		pocket=FrustaPocket (0.13,2,dfrustra,pdb,chains[i])
+		pocket=FrustaPocket (0.13,2,dchain,dfrustra,pdb,chains[i])
 
 outpml=open(direc+'/Pockets/VisualizationPockets.pml','w')
 outpml.write('load '+pdb+'.pdb\nhide all\nshow cartoon, all\n')
