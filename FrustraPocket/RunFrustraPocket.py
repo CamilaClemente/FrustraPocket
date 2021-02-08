@@ -158,6 +158,20 @@ for j in range(0,len(chains)):
 		lpock=lpock[:-1]
 		sppock=lpock.split()
 		outp=open(direc+'/Pockets/'+sppock[1]+'_'+chains[j]+'.pdb','w')
+		mayor=0
+		for l in range(2, len(sppock)):
+			grep='grep \"'+sppock[l]+' '+chains[j]+'\" '+direc+'/'+chains[j]+'/'+pdb+'_'+chains[j]+'.done/FrustrationData/'+pdb+'_'+chains[j]+'.pdb_mutational_5adens > '+direc+'/a'
+			os.system(grep)
+			aa=open(direc+'/a','r')
+			laa=aa.readline()
+			spa=laa.split()
+			if float(mayor) < float(spa[6]):
+				mayor=spa[6]
+			aa.close()
+		outp.write('REMARK	'+str(mayor)+'\n')
+		
+		rm='rm '+direc+'/a'
+		os.system(rm)
 		outpml.write('load '+sppock[1]+'_'+chains[j]+'.pdb\nshow surface,'+sppock[1]+'_'+chains[j]+'\n')
 		for l in range(2, len(sppock)):
 			pdbn=open(direc+'/'+chains[j]+'/'+pdb+'_'+chains[j]+'.done/FrustrationData/'+pdb+'_'+chains[j]+'.pdb','r')
