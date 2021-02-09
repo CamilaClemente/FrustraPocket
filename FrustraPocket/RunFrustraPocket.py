@@ -13,29 +13,46 @@ def Chains(direc, pdb):
 			c=sp[i]
 			if c[-1] == ";" or c[-1] == ",":
 				c=c[:-1]
-			chains.append(c)
+			t=splitPDB(direc, pdb, c)
+			if t == 1:
+				chains.append(c)
 	aux.close()
 	rm='rm aux_'+pdb
 	os.system(rm)
 	return chains
 
-	
+def splitPDB(direc, pdb, chain):
+	pdbo=open(direc+'/'+pdb+'.pdb','r')
+	c=0
+	r=0
+	for lpdb in pdbo.readlines():
+		if lpdb[21] == chain:
+			c+=1
+	if c > 200:
+		r=1
+	return r
 def Fstandlden(dfrustra,dchain,pdb,chain):
 	vect=[]
 	frust=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational_5adens','r')
-	out=open(dchain+'/'+pdb+'.fstdata','w')
+	out=open(dchain+'/'+pdb+'_aux.fstdata','w')
+	d=1
 	for lineade in frust.readlines():
 		spadens=lineade.split()
-		out.write(spadens[0]+' '+spadens[6]+' ')
-		auxld=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational','r')
-		for lld in auxld.readlines():
-			spld=lld.split()
-			if spadens[0] == spld[0]:
-				out.write(spld[4]+'\n')
-				break
-		auxld.close()
+		if d==1:
+			d=2
+		else:
+			out.write(spadens[0]+' '+spadens[6]+' ')
+			auxld=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational','r')
+			for lld in auxld.readlines():
+				spld=lld.split()
+				if spadens[0] == spld[0]:
+					out.write(spld[4]+'\n')
+					break
+			auxld.close()
 	frust.close()
 	out.close()
+	sort='cd '+dchain+'/;sort -u -r -k2 '+pdb+'_aux.fstdata > '+pdb+'.fstdata;rm '+pdb+'_aux.fstdata'
+	os.system(sort)
 	
 
 def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index threshold (fit) and local density threshold (ldt), pockets directory results, frustraresultdirectory and pdb id
@@ -43,57 +60,53 @@ def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index thresh
 	out=open(dchain+'/'+pdb+'.pockets','w')
 	frust=open(dchain+'/'+pdb+'.fstdata','r')
 	pocket=1
-	ln=0
 	for linefrus in frust.readlines():
-		if ln==0:
-			ln=1
+		d=0
+		spfrust=linefrus.split()
+		if spfrust[0] == 'NA':
+			print('NA')
 		else:
-			d=0
-			spfrust=linefrus.split()
-			if spfrust[0] == 'NA':
-				print('NA')
-			else:
-				if float(spfrust[1]) >= fit and float(spfrust[2]) >= ldt:
-					if len(vect) > 0:
-						d=0
-						for i in range (0, len(vect)):
-							if vect[i] == spfrust[0]:
-								d=1
-					if d == 0: 
-						auxmut=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational','r')
-						vectaux=[]
-						vectaux.append(spfrust[0])
-						for mutline in auxmut.readlines():
-							spmut=mutline.split()
-							if spmut[0] == spfrust[0] :
-								vectaux.append(spmut[1])
-							elif spmut[1] == spfrust[0]: 
-								vectaux.append(spmut[0])
-						auxmut.close()
-						if pocket == 1 and len(vectaux) > 1:
+			if float(spfrust[1]) >= fit and float(spfrust[2]) >= ldt:
+				if len(vect) > 0:
+					d=0
+					for i in range (0, len(vect)):
+						if vect[i] == spfrust[0]:
+							d=1
+				if d == 0: 
+					auxmut=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational','r')
+					vectaux=[]
+					vectaux.append(spfrust[0])
+					for mutline in auxmut.readlines():
+						spmut=mutline.split()
+						if spmut[0] == spfrust[0] :
+							vectaux.append(spmut[1])
+						elif spmut[1] == spfrust[0]: 
+							vectaux.append(spmut[0])
+					auxmut.close()
+					if pocket == 1 and len(vectaux) > 1:
+						out.write('Pocket '+str(pocket))
+						for res in range(0,len(vectaux)):
+							out.write(' '+vectaux[res])
+						out.write('\n')
+						pocket+=1
+						vect=vect+vectaux
+					elif len(vectaux) > 1:
+						vaux=[]
+						vi=0
+						for i in range(0,len(vectaux)):
+							r=0
+							for j in range(0,len(vect)):
+								if vectaux[i] == vect[j]:
+									r=1
+							if r==0:
+								vaux.append(vectaux[i])
+						if len(vectaux) == len(vaux):
 							out.write('Pocket '+str(pocket))
 							for res in range(0,len(vectaux)):
 								out.write(' '+vectaux[res])
 							out.write('\n')
 							pocket+=1
 							vect=vect+vectaux
-						elif len(vectaux) > 1:
-							vaux=[]
-							vi=0
-							for i in range(0,len(vectaux)):
-								r=0
-								for j in range(0,len(vect)):
-									if vectaux[i] == vect[j]:
-										r=1
-								if r==0:
-									vaux.append(vectaux[i])
-							if len(vectaux) == len(vaux):
-								out.write('Pocket '+str(pocket))
-								for res in range(0,len(vectaux)):
-									out.write(' '+vectaux[res])
-								out.write('\n')
-								pocket+=1
-								vect=vect+vectaux
 	out.close()
 	frust.close()
 	return pocket
@@ -117,7 +130,7 @@ com='cp '+pipedir+'center_of_mass.py '+direc+'/Pockets/center_of_mass.py'
 os.system(com)
 #----- Download PDB file -----
 
-pathPDB=os.getcwd()+'/'+pdb+'.pdb' #if you have a folder with pdbs this path must be modified
+pathPDB=os.getcwd()+'/'+pdb+'.pdb'
 if path.exists(pathPDB):
 	cp='cp '+pathPDB+' '+direc+'/'+pdb+'.pdb'
 	os.system(cp)
@@ -142,8 +155,9 @@ for i in range(0,len(chains)):
 	dfrustra=dchain+'/'+pdb+'_'+chains[i]+'.done/'
 	Fstandlden(dfrustra,dchain,pdb,chains[i])
 	pocket=FrustaPocket (0.13,2.6,dchain,dfrustra,pdb,chains[i])
-
-	if pocket < 2:
+	
+	if int(pocket) <= 3:
+		print (pocket)
 		pocket=FrustaPocket (0.13,2,dchain,dfrustra,pdb,chains[i])
 
 outpml=open(direc+'/Pockets/VisualizationPockets.pml','w')
@@ -169,6 +183,7 @@ for j in range(0,len(chains)):
 			if float(mayor) < float(spa[6]):
 				mayor=spa[6]
 			aa.close()
+		#p=score/(len(sppock)-2)
 		outp.write('REMARK	'+str(mayor)+'\n')
 		
 		rm='rm '+direc+'/a'
@@ -215,7 +230,7 @@ if len(sys.argv) > 2:
 	cplig='cp '+pipedir+lig+'.pdb '+direc+'/'+lig+'.pdb'
 	os.system(cplig)
 
-	pythonpath='/home/XXX/MGLTools-1.5.7rc1/bin/pythonsh' #change
+	pythonpath='/home/XXX/MGLTools-1.5.7rc1/bin/pythonsh'
 	preceptor='cd '+direc+'/;'+pythonpath+' prepare_receptor4.py -A hydrogens -r '+pdb+'_clean.pdb -o '+pdb+'_aux.pdbqt'
 	fixpdbqt='python3 fixpdbqt.py '+direc+' '+pdb
 	pliga='cd '+direc+'/;'+pythonpath+' prepare_ligand4.py -A hydrogens -l '+lig+'.pdb -o '+lig+'_aux.pdbqt'
@@ -226,9 +241,6 @@ if len(sys.argv) > 2:
 	os.system(fixligand)
 	rm='cd '+direc+'/;rm '+pdb+'_aux.pdbqt '+lig+'_aux.pdbqt'
 	os.system(rm)
-	os.system(pliga)
-	os.system(preceptor)
-	os.system(fixpdbqt)
 	center=open(direc+'/Pockets/Pocket_centerofmass.txt','r')
 	outvina=open(direc+'/VinaResults.txt','w')
 	for lines in center.readlines():
@@ -244,4 +256,3 @@ if len(sys.argv) > 2:
 		outvina.write(splines[0]+' '+vline[1])
 	center.close()
 	outvina.close()
-
