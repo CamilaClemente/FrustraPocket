@@ -224,7 +224,7 @@ if len(sys.argv) > 2:
 	os.system(preceptor)
 	os.system(fixpdbqt)
 	os.system(fixligand)
-	rm='rm '+pdb+'_aux.pdbqt '+lig+'_aux.pdbqt'
+	rm='cd '+direc+'/;rm '+pdb+'_aux.pdbqt '+lig+'_aux.pdbqt'
 	os.system(rm)
 	os.system(pliga)
 	os.system(preceptor)
