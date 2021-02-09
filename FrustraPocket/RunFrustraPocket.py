@@ -11,7 +11,8 @@ def Chains(direc, pdb):
 		sp=line.split()
 		for i in range(3,len(sp)):
 			c=sp[i]
-			c=c[:-1]
+			if c[-1] == ";" or c[-1] == ",":
+				c=c[:-1]
 			chains.append(c)
 	aux.close()
 	rm='rm aux_'+pdb
