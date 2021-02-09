@@ -218,7 +218,14 @@ if len(sys.argv) > 2:
 	pythonpath='/home/XXX/MGLTools-1.5.7rc1/bin/pythonsh' #change
 	preceptor='cd '+direc+'/;'+pythonpath+' prepare_receptor4.py -A hydrogens -r '+pdb+'_clean.pdb -o '+pdb+'_aux.pdbqt'
 	fixpdbqt='python3 fixpdbqt.py '+direc+' '+pdb
-	pliga='cd '+direc+'/;'+pythonpath+' prepare_ligand4.py -A hydrogens -l '+lig+'.pdb -o '+lig+'.pdbqt'
+	pliga='cd '+direc+'/;'+pythonpath+' prepare_ligand4.py -A hydrogens -l '+lig+'.pdb -o '+lig+'_aux.pdbqt'
+	fixligand='python3 fixligand.py '+direc+' '+lig
+	os.system(pliga)
+	os.system(preceptor)
+	os.system(fixpdbqt)
+	os.system(fixligand)
+	rm='rm '+pdb+'_aux.pdbqt '+lig+'_aux.pdbqt'
+	os.system(rm)
 	os.system(pliga)
 	os.system(preceptor)
 	os.system(fixpdbqt)
