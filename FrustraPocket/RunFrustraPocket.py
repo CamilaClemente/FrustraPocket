@@ -4,9 +4,14 @@ import os.path as path
 
 def Chains(direc, pdb):
 	chains=[]
-	grep='grep \"CHAIN: \" '+direc+'/'+pdb+'.pdb > aux_'+pdb
+	#https://files.rcsb.org/header/1NRE.pdb	
+	wget='wget \'https://files.rcsb.org/header/'+pdb+'.pdb\' -O '+direc+'/'+pdb+'header.pdb'
+	os.system(wget)
+	grep='grep \"CHAIN: \" '+direc+'/'+pdb+'header.pdb > '+direc+'/aux'
 	os.system(grep)
-	aux=open('aux_'+pdb,'r')
+	rm='rm '+direc+'/'+pdb+'header.pdb'
+	os.system(rm)
+	aux=open(direc+'/aux','r')
 	for line in aux.readlines():
 		sp=line.split()
 		for i in range(3,len(sp)):
@@ -17,7 +22,7 @@ def Chains(direc, pdb):
 			if t == 1:
 				chains.append(c)
 	aux.close()
-	rm='rm aux_'+pdb
+	rm='rm '+direc+'/aux'
 	os.system(rm)
 	return chains
 
@@ -26,11 +31,14 @@ def splitPDB(direc, pdb, chain):
 	c=0
 	r=0
 	for lpdb in pdbo.readlines():
-		if lpdb[21] == chain:
+		atom=lpdb[0]+lpdb[1]+lpdb[2]+lpdb[3]
+		if atom == 'ATOM' and lpdb[21] == chain:
 			c+=1
-	if c > 200:
+	if c > 150:
 		r=1
+	pdbo.close()
 	return r
+	
 def Fstandlden(dfrustra,dchain,pdb,chain):
 	vect=[]
 	frust=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational_5adens','r')
@@ -46,8 +54,12 @@ def Fstandlden(dfrustra,dchain,pdb,chain):
 			for lld in auxld.readlines():
 				spld=lld.split()
 				if spadens[0] == spld[0]:
-					out.write(spld[4]+'\n')
+					out.write(spld[4])
 					break
+				if spadens[0] == spld[1]:
+					out.write(spld[5])
+					break
+			out.write('\n')
 			auxld.close()
 	frust.close()
 	out.close()
@@ -66,47 +78,48 @@ def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index thresh
 		if spfrust[0] == 'NA':
 			print('NA')
 		else:
-			if float(spfrust[1]) >= fit and float(spfrust[2]) >= ldt:
-				if len(vect) > 0:
-					d=0
-					for i in range (0, len(vect)):
-						if vect[i] == spfrust[0]:
-							d=1
-				if d == 0: 
-					auxmut=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational','r')
-					vectaux=[]
-					vectaux.append(spfrust[0])
-					for mutline in auxmut.readlines():
-						spmut=mutline.split()
-						if spmut[0] == spfrust[0] :
-							vectaux.append(spmut[1])
-						elif spmut[1] == spfrust[0]: 
-							vectaux.append(spmut[0])
-					auxmut.close()
-					if pocket == 1 and len(vectaux) > 1:
-						out.write('Pocket '+str(pocket))
-						for res in range(0,len(vectaux)):
-							out.write(' '+vectaux[res])
-						out.write('\n')
-						pocket+=1
-						vect=vect+vectaux
-					elif len(vectaux) > 1:
-						vaux=[]
-						vi=0
-						for i in range(0,len(vectaux)):
-							r=0
-							for j in range(0,len(vect)):
-								if vectaux[i] == vect[j]:
-									r=1
-							if r==0:
-								vaux.append(vectaux[i])
-						if len(vectaux) == len(vaux):
+			if len(spfrust) == 3:
+				if float(spfrust[1]) >= fit and float(spfrust[2]) >= ldt:
+					if len(vect) > 0:
+						d=0
+						for i in range (0, len(vect)):
+							if vect[i] == spfrust[0]:
+								d=1
+					if d == 0: 
+						auxmut=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational','r')
+						vectaux=[]
+						vectaux.append(spfrust[0])
+						for mutline in auxmut.readlines():
+							spmut=mutline.split()
+							if spmut[0] == spfrust[0] :
+								vectaux.append(spmut[1])
+							elif spmut[1] == spfrust[0]: 
+								vectaux.append(spmut[0])
+						auxmut.close()
+						if pocket == 1 and len(vectaux) > 1:
 							out.write('Pocket '+str(pocket))
 							for res in range(0,len(vectaux)):
 								out.write(' '+vectaux[res])
 							out.write('\n')
 							pocket+=1
 							vect=vect+vectaux
+						elif len(vectaux) > 1:
+							vaux=[]
+							vi=0
+							for i in range(0,len(vectaux)):
+								r=0
+								for j in range(0,len(vect)):
+									if vectaux[i] == vect[j]:
+										r=1
+								if r==0:
+									vaux.append(vectaux[i])
+							if len(vectaux) == len(vaux):
+								out.write('Pocket '+str(pocket))
+								for res in range(0,len(vectaux)):
+									out.write(' '+vectaux[res])
+								out.write('\n')
+								pocket+=1
+								vect=vect+vectaux
 	out.close()
 	frust.close()
 	return pocket
@@ -132,12 +145,14 @@ os.system(com)
 
 pathPDB=os.getcwd()+'/'+pdb+'.pdb'
 if path.exists(pathPDB):
-	cp='cp '+pathPDB+' '+direc+'/'+pdb+'.pdb'
+	cp='cp '+pathPDB+' '+direc+'/'+pdb+'_aux.pdb'
 	os.system(cp)
 else:
-	wget='wget \'http://www.rcsb.org/pdb/files/'+pdb+'.pdb\' -O '+direc+'/'+pdb+'.pdb'
+	wget='wget \'http://www.rcsb.org/pdb/files/'+pdb+'.pdb\' -O '+direc+'/'+pdb+'_aux.pdb'
 	os.system(wget)
 
+fixpdb='python3 fixpdb.py '+direc+' '+pdb
+os.system(fixpdb)
 #----- FrustrAR -----
 chains = Chains(direc, pdb)
 dchain=''
@@ -154,14 +169,13 @@ for i in range(0,len(chains)):
 	#----- Generating Pockets -----
 	dfrustra=dchain+'/'+pdb+'_'+chains[i]+'.done/'
 	Fstandlden(dfrustra,dchain,pdb,chains[i])
-	pocket=FrustaPocket (0.13,2.6,dchain,dfrustra,pdb,chains[i])
+	pocket=FrustaPocket (0.18,2.6,dchain,dfrustra,pdb,chains[i])
 	
 	if int(pocket) <= 3:
-		print (pocket)
-		pocket=FrustaPocket (0.13,2,dchain,dfrustra,pdb,chains[i])
+		pocket=FrustaPocket (0.3,0,dchain,dfrustra,pdb,chains[i])
 
 outpml=open(direc+'/Pockets/VisualizationPockets.pml','w')
-outpml.write('load '+pdb+'.pdb\nhide all\nshow cartoon, all\n')
+outpml.write('load '+pdb+'.pdb\nshow cartoon, all\n')
 
 cp='cp '+direc+'/'+pdb+'.pdb '+direc+'/Pockets/'+pdb+'.pdb'
 os.system(cp)
@@ -175,7 +189,9 @@ for j in range(0,len(chains)):
 		outp=open(direc+'/Pockets/'+sppock[1]+'_'+chains[j]+'.pdb','w')
 		mayor=0
 		for l in range(2, len(sppock)):
-			grep='grep \"'+sppock[l]+' '+chains[j]+'\" '+direc+'/'+chains[j]+'/'+pdb+'_'+chains[j]+'.done/FrustrationData/'+pdb+'_'+chains[j]+'.pdb_mutational_5adens > '+direc+'/a'
+			if int(sppock[l]) < 0:
+				sppock[l]=int(sppock[l])*-1
+			grep='grep \"'+str(sppock[l])+' '+chains[j]+'\" '+direc+'/'+chains[j]+'/'+pdb+'_'+chains[j]+'.done/FrustrationData/'+pdb+'_'+chains[j]+'.pdb_mutational_5adens > '+direc+'/a'
 			os.system(grep)
 			aa=open(direc+'/a','r')
 			laa=aa.readline()
