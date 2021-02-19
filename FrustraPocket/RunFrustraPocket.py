@@ -91,7 +91,7 @@ def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index thresh
 						vectaux.append(spfrust[0])
 						for mutline in auxmut.readlines():
 							spmut=mutline.split()
-							if spmut[0] == spfrust[0] :
+							if spmut[0] == spfrust[0]:
 								vectaux.append(spmut[1])
 							elif spmut[1] == spfrust[0]: 
 								vectaux.append(spmut[0])
@@ -143,7 +143,8 @@ com='cp '+pipedir+'center_of_mass.py '+direc+'/Pockets/center_of_mass.py'
 os.system(com)
 #----- Download PDB file -----
 
-pathPDB=os.getcwd()+'/'+pdb+'.pdb'
+#pathPDB=os.getcwd()+'/'+pdb+'.pdb'
+pathPDB=pipedir
 if path.exists(pathPDB):
 	cp='cp '+pathPDB+' '+direc+'/'+pdb+'_aux.pdb'
 	os.system(cp)
@@ -169,10 +170,10 @@ for i in range(0,len(chains)):
 	#----- Generating Pockets -----
 	dfrustra=dchain+'/'+pdb+'_'+chains[i]+'.done/'
 	Fstandlden(dfrustra,dchain,pdb,chains[i])
-	pocket=FrustaPocket (0.18,2.6,dchain,dfrustra,pdb,chains[i])
+	pocket=FrustaPocket (0.13,2.6,dchain,dfrustra,pdb,chains[i])
 	
 	if int(pocket) <= 3:
-		pocket=FrustaPocket (0.3,0,dchain,dfrustra,pdb,chains[i])
+		pocket=FrustaPocket (0.2,1,dchain,dfrustra,pdb,chains[i])
 
 outpml=open(direc+'/Pockets/VisualizationPockets.pml','w')
 outpml.write('load '+pdb+'.pdb\nshow cartoon, all\n')
