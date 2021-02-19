@@ -143,8 +143,7 @@ com='cp '+pipedir+'center_of_mass.py '+direc+'/Pockets/center_of_mass.py'
 os.system(com)
 #----- Download PDB file -----
 
-#pathPDB=os.getcwd()+'/'+pdb+'.pdb'
-pathPDB=pipedir
+pathPDB=os.getcwd()+'/'+pdb+'.pdb'
 if path.exists(pathPDB):
 	cp='cp '+pathPDB+' '+direc+'/'+pdb+'_aux.pdb'
 	os.system(cp)
