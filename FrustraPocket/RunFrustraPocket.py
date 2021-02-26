@@ -129,7 +129,6 @@ def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index thresh
 #----- Creating Directories ----
 
 pdb=sys.argv[1]
-pdb=pdb.lower()
 
 pipedir=os.getcwd()+'/'
 direc=pipedir+'job.'+pdb
