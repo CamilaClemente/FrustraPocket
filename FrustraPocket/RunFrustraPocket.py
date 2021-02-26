@@ -140,8 +140,6 @@ os.system(rm)
 os.system(mkdir)
 mkdir='mkdir '+direc+'/Pockets/'
 os.system(mkdir)
-com='cp '+pipedir+'center_of_mass.py '+direc+'/Pockets/center_of_mass.py'
-os.system(com)
 #----- Download PDB file -----
 
 pathPDB=os.getcwd()+'/'+pdb+'.pdb'
