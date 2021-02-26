@@ -144,8 +144,8 @@ com='cp '+pipedir+'center_of_mass.py '+direc+'/Pockets/center_of_mass.py'
 os.system(com)
 #----- Download PDB file -----
 
-#pathPDB=os.getcwd()+'/'+pdb+'.pdb'
-pathPDB='/home/maria/Escritorio/BKP/maria/Desktop/PDBs/'+pdb+'.pdb'
+pathPDB=os.getcwd()+'/'+pdb+'.pdb'
+
 if path.exists(pathPDB):
 	cp='cp '+pathPDB+' '+direc+'/'+pdb+'_aux.pdb'
 	os.system(cp)
@@ -238,7 +238,7 @@ if len(sys.argv) > 2:
 	cplig='cp '+pipedir+lig+'.pdb '+direc+'/'+lig+'.pdb'
 	os.system(cplig)
 
-	pythonpath='/home/maria/MGLTools-1.5.7rc1/bin/pythonsh'
+	pythonpath='/home/XXX/MGLTools-1.5.7rc1/bin/pythonsh'
 	preceptor='cd '+direc+'/;'+pythonpath+' prepare_receptor4.py -A hydrogens -r '+pdb+'_clean.pdb -o '+pdb+'_aux.pdbqt'
 	fixpdbqt='python3 fixpdbqt.py '+direc+' '+pdb
 	pliga='cd '+direc+'/;'+pythonpath+' prepare_ligand4.py -A hydrogens -l '+lig+'.pdb -o '+lig+'_aux.pdbqt'
