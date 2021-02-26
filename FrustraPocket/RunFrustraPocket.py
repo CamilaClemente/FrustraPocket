@@ -1,6 +1,7 @@
 import os
 import sys
 import os.path as path
+import numpy as np
 
 def Chains(direc, pdb):
 	chains=[]
@@ -128,7 +129,7 @@ def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index thresh
 #----- Creating Directories ----
 
 pdb=sys.argv[1]
-#pdb=pdb.lower()
+pdb=pdb.lower()
 
 pipedir=os.getcwd()+'/'
 direc=pipedir+'job.'+pdb
@@ -143,7 +144,8 @@ com='cp '+pipedir+'center_of_mass.py '+direc+'/Pockets/center_of_mass.py'
 os.system(com)
 #----- Download PDB file -----
 
-pathPDB=os.getcwd()+'/'+pdb+'.pdb'
+#pathPDB=os.getcwd()+'/'+pdb+'.pdb'
+pathPDB='/home/maria/Escritorio/BKP/maria/Desktop/PDBs/'+pdb+'.pdb'
 if path.exists(pathPDB):
 	cp='cp '+pathPDB+' '+direc+'/'+pdb+'_aux.pdb'
 	os.system(cp)
@@ -215,22 +217,12 @@ for j in range(0,len(chains)):
 						outp.write(lpdb)
 			pdbn.close()
 		outp.close()
-		center=open(direc+'/Pockets/centerofmass.pml','w')
-		center.write('load '+sppock[1]+'_'+chains[j]+'.pdb\nimport center_of_mass\ncom '+sppock[1]+'_'+chains[j]+'\nquit')
-		center.close()
-		mass='cd '+direc+'/Pockets/;pymol -cq centerofmass.pml > aux'
-		os.system(mass)
-		tail='cd '+direc+'/Pockets/;tail -2 aux > tail'
-		os.system(tail)
-		tailf=open(direc+'/Pockets/tail','r')
-		rtail=tailf.readline()
-		sp=rtail.split(':')
-		allcenter.write(sppock[1]+'_'+chains[j]+' '+sp[1])
-		tailf.close()
-	pockets.close()
-rm='cd '+direc+'/Pockets/;rm tail aux centerofmass.pml center_of_mass.py -r __pycache__'
-os.system(rm)
-
+		p=direc+'/Pockets/'+sppock[1]+'_'+chains[j]+'.pdb'
+		#p='\"'+p+'\"'
+		#print(p)
+		a = np.genfromtxt(p, skip_header=1, usecols=[6, 7, 8])
+		v = a.mean(axis=0)
+		allcenter.write(p+' '+str(v[0])+' '+str(v[1])+' '+str(v[2])+'\n')
 allcenter.close()
 outpml.write('zoom all')
 outpml.close()
@@ -246,7 +238,7 @@ if len(sys.argv) > 2:
 	cplig='cp '+pipedir+lig+'.pdb '+direc+'/'+lig+'.pdb'
 	os.system(cplig)
 
-	pythonpath='/home/XXX/MGLTools-1.5.7rc1/bin/pythonsh'
+	pythonpath='/home/maria/MGLTools-1.5.7rc1/bin/pythonsh'
 	preceptor='cd '+direc+'/;'+pythonpath+' prepare_receptor4.py -A hydrogens -r '+pdb+'_clean.pdb -o '+pdb+'_aux.pdbqt'
 	fixpdbqt='python3 fixpdbqt.py '+direc+' '+pdb
 	pliga='cd '+direc+'/;'+pythonpath+' prepare_ligand4.py -A hydrogens -l '+lig+'.pdb -o '+lig+'_aux.pdbqt'
@@ -264,6 +256,7 @@ if len(sys.argv) > 2:
 		splines=lines.split()
 		print('Vina Results for pocket:'+splines[0])
 		vina='cd '+direc+'/;vina --receptor '+pdb+'.pdbqt --ligand '+lig+'.pdbqt --center_x  '+splines[1]+' --center_y '+splines[2]+' --center_z '+splines[3]+' --size_x 30 --size_y 30 --size_z 30 --out '+splines[0]+'_ligand'
+		print(vina)
 		os.system(vina)
 		vhead='cd '+direc+'/;head -2 '+splines[0]+'_ligand > aux'
 		os.system(vhead)
