@@ -218,7 +218,7 @@ for j in range(0,len(chains)):
 		center=open(direc+'/Pockets/centerofmass.pml','w')
 		center.write('load '+sppock[1]+'_'+chains[j]+'.pdb\nimport center_of_mass\ncom '+sppock[1]+'_'+chains[j]+'\nquit')
 		center.close()
-		mass='cd '+direc+'/Pockets/;pymol centerofmass.pml > aux'
+		mass='cd '+direc+'/Pockets/;pymol -cq centerofmass.pml > aux'
 		os.system(mass)
 		tail='cd '+direc+'/Pockets/;tail -2 aux > tail'
 		os.system(tail)
