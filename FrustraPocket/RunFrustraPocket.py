@@ -168,7 +168,7 @@ for i in range(0,len(chains)):
 	#----- Generating Pockets -----
 	dfrustra=dchain+'/'+pdb+'_'+chains[i]+'.done/'
 	Fstandlden(dfrustra,dchain,pdb,chains[i])
-	pocket=FrustaPocket (0.13,2.6,dchain,dfrustra,pdb,chains[i])
+	pocket=FrustaPocket (0.18,2.8,dchain,dfrustra,pdb,chains[i])
 	
 	if int(pocket) <= 3:
 		pocket=FrustaPocket (0.2,1,dchain,dfrustra,pdb,chains[i])
