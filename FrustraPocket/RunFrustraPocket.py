@@ -251,14 +251,15 @@ if len(sys.argv) > 2:
 	for lines in center.readlines():
 		lines=lines[:-1]
 		splines=lines.split()
-		print('Vina Results for pocket:'+splines[0])
-		vina='cd '+direc+'/;vina --receptor '+pdb+'.pdbqt --ligand '+lig+'.pdbqt --center_x  '+splines[1]+' --center_y '+splines[2]+' --center_z '+splines[3]+' --size_x 30 --size_y 30 --size_z 30 --out '+splines[0]+'_ligand'
+		pdbname=splines[0].split('/')
+		print('Vina Results for pocket:'+pdbname[9])
+		vina='cd '+direc+'/;vina --receptor '+pdb+'.pdbqt --ligand '+lig+'.pdbqt --center_x  '+splines[1]+' --center_y '+splines[2]+' --center_z '+splines[3]+' --size_x 30 --size_y 30 --size_z 30 --out '+pdbname[9]+'_ligand'
 		print(vina)
 		os.system(vina)
-		vhead='cd '+direc+'/;head -2 '+splines[0]+'_ligand > aux'
+		vhead='cd '+direc+'/;head -2 '+pdbname[9]+'_ligand > aux'
 		os.system(vhead)
 		vaux=open(direc+'/aux','r')
 		vline=vaux.readlines()
-		outvina.write(splines[0]+' '+vline[1])
+		outvina.write(pdbname[9]+' '+vline[1])
 	center.close()
 	outvina.close()
