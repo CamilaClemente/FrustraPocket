@@ -7,16 +7,15 @@ You can use the pipeline in two ways:
 1) Only for predict protein-ligand and catalityc pockets
 2) To predict protein-ligand and catalytic pockets and run a docking with a specific ligand to each pocket predicted.
 
-Dependencies, you need to install the followed softwares: 
-Only for predict protein-ligand and catalytic sites: 
-	- FrustratometerR: https://github.com/proteinphysiologylab/frustratometeR
-	- Pymol (sudo apt-get install pymol)
+Tools required to predict protein-ligand and catalytic sites (1):
+FrustratometerR: https://github.com/proteinphysiologylab/frustratometeR 
 
-To predict protein-ligand and catalytic sites and run a docking with a specific ligand to each pocket predicted.
-	- FrustratometerR: https://github.com/proteinphysiologylab/frustratometeR
-	- MGLTools-1.5.7 (http://mgltools.scripps.edu/downloads/mgltools-1-5-7rc1)
-	- Autodock Vina (http://vina.scripps.edu/download.html)
-	- Pymol (sudo apt-get install pymol)
+Additional tool to predict protein-ligand and catalytic sites and run a docking with a specific ligand to each pocket predicted (2):
+MGL Tools: http://mgltools.scripps.edu/downloads) - 
+Autodock Vina: http://vina.scripps.edu/download.html
+
+For visualization:
+Pymol: https://pymol.org/ (sudo apt-get install pymol)
 	
 	
 The input files are: a PDBId and a ligand (PDB Format) to do the docking (only if it is necessary).
