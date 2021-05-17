@@ -1,7 +1,40 @@
+"""
+FrustraPocket: A protein–ligand binding site predictor using frustration
+Authors: Maria I Freiberger, Camila M Clemente, Cesar O Leonetti, Soledad Ravetti, R. Gonzalo Parra, and Diego U Ferreiro.
+
+Please also cite:
+XXXXXX
+
+Tools required to predict protein-ligand and catalytic sites:
+FrustratometerR: https://github.com/proteinphysiologylab/frustratometeR 
+
+Additional tool to predict protein-ligand and catalytic sites and run a docking with a specific ligand to each pocket predicted:
+MGL Tools: http://mgltools.scripps.edu/downloads) - 
+Autodock Vina: http://vina.scripps.edu/download.html
+
+For visualization:
+Pymol: https://pymol.org/ (sudo apt-get install pymol)
+"""
+
+########################################################################################
+# Authorship
+########################################################################################
+
+__credits__ = ["Maria I Freiberger, Camila M Clemente, Cesar O Leonetti, Soledad Ravetti, R. Gonzalo Parra, and Diego U Ferreiro."]
+__version__ = "1.0"
+
+########################################################################################
+# Modules to import
+########################################################################################
+
 import os
 import sys
 import os.path as path
 import numpy as np
+
+########################################################################################
+# Preparation functions
+########################################################################################
 
 def Chains(direc, pdb):
 	chains=[]
@@ -26,7 +59,7 @@ def Chains(direc, pdb):
 	rm='rm '+direc+'/aux'
 	os.system(rm)
 	return chains
-
+########################################################################################
 def splitPDB(direc, pdb, chain):
 	pdbo=open(direc+'/'+pdb+'.pdb','r')
 	c=0
@@ -39,7 +72,7 @@ def splitPDB(direc, pdb, chain):
 		r=1
 	pdbo.close()
 	return r
-	
+########################################################################################
 def Fstandlden(dfrustra,dchain,pdb,chain):
 	vect=[]
 	frust=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational_5adens','r')
@@ -66,8 +99,7 @@ def Fstandlden(dfrustra,dchain,pdb,chain):
 	out.close()
 	sort='cd '+dchain+'/;sort -u -r -k2 '+pdb+'_aux.fstdata > '+pdb+'.fstdata;rm '+pdb+'_aux.fstdata'
 	os.system(sort)
-	
-
+########################################################################################
 def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index threshold (fit) and local density threshold (ldt), pockets directory results, frustraresultdirectory and pdb id
 	vect=[]# empty vector for residues 
 	out=open(dchain+'/'+pdb+'.pockets','w')
@@ -125,9 +157,9 @@ def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index thresh
 	frust.close()
 	return pocket
 	
-
-#----- Creating Directories ----
-
+########################################################################################
+# Creating Directories
+########################################################################################
 pdb=sys.argv[1]
 
 pipedir=os.getcwd()+'/'
@@ -139,8 +171,9 @@ os.system(rm)
 os.system(mkdir)
 mkdir='mkdir '+direc+'/Pockets/'
 os.system(mkdir)
-#----- Download PDB file -----
-
+########################################################################################
+# Download PDB file
+########################################################################################
 pathPDB=os.getcwd()+'/'+pdb+'.pdb'
 
 if path.exists(pathPDB):
