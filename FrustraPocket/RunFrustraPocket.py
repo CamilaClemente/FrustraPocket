@@ -35,7 +35,6 @@ import numpy as np
 ########################################################################################
 # Preparation functions
 ########################################################################################
-
 def Chains(direc, pdb):
 	chains=[]
 	#https://files.rcsb.org/header/1NRE.pdb	
@@ -166,7 +165,7 @@ def FrustaPocket (fitmenor,fitmayor,ldmenor,ldmayor,dchain,dfrustra,pdb,chain): 
 								vect=vect+vectaux
 	out.close()
 	frust.close()
-	return pocket	
+	return pocket
 ########################################################################################
 # Creating Directories
 ########################################################################################
@@ -185,7 +184,7 @@ os.system(mkdir)
 ########################################################################################
 # Download PDB file
 ########################################################################################
-#pathPDB=os.getcwd()+'/'+pdb+'.pdb'
+##pathPDB=os.getcwd()+'/'+pdb+'.pdb'
 pathPDB='/home/maria/Documentos/FrustraPocket/PDBs/'+pdb+'.pdb'
 if path.exists(pathPDB):
 	cp='cp '+pathPDB+' '+direc+'/'+pdb+'_aux.pdb'
@@ -293,13 +292,18 @@ if len(sys.argv) > 2:
 	os.system(fixligand)
 	rm='cd '+direc+'/;rm '+pdb+'_aux.pdbqt '+lig+'_aux.pdbqt'
 	os.system(rm)
+	os.system('perl eboxsize.pl '+direc+'/'+lig+'.pdbqt > grid')
+	grid=open('grid','r')
+	lgrid=grid.readline()
+	gridsize=lgrid[:-1]
+	grid.close()
 	center=open(direc+'/Pockets/Pocket_centerofmass.txt','r')
 	outvina=open(direc+'/VinaResults.txt','w')
 	for lines in center.readlines():
 		lines=lines[:-1]
 		splines=lines.split()
 		print('Vina Results for pocket:'+splines[0])
-		vina='cd '+direc+'/;vina --receptor '+pdb+'.pdbqt --ligand '+lig+'.pdbqt --center_x  '+splines[1]+' --center_y '+splines[2]+' --center_z '+splines[3]+' --size_x 30 --size_y 30 --size_z 30 --out '+splines[0]+'_ligand'
+		vina='cd '+direc+'/;vina --receptor '+pdb+'.pdbqt --ligand '+lig+'.pdbqt --center_x  '+splines[1]+' --center_y '+splines[2]+' --center_z '+splines[3]+' --size_x '+gridsize+' --size_y '+gridsize+' --size_z '+gridsize+' --out '+splines[0]+'_ligand'
 		print(vina)
 		os.system(vina)
 		vhead='cd '+direc+'/;head -2 '+splines[0]+'_ligand > aux'
