@@ -1,4 +1,4 @@
-"""
+print("""
 FrustraPocket: A protein–ligand binding site predictor using frustration
 Authors: Maria I Freiberger, Camila M Clemente, Cesar O Leonetti, Soledad Ravetti, Diego U Ferreiro and R. Gonzalo Parra.
 
@@ -14,7 +14,7 @@ Autodock Vina: http://vina.scripps.edu/download.html
 
 For visualization:
 Pymol: https://pymol.org/ (sudo apt-get install pymol)
-"""
+""")
 
 ########################################################################################
 # Authorship
