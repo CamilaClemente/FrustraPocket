@@ -1,6 +1,6 @@
 """
 FrustraPocket: A protein–ligand binding site predictor using frustration
-Authors: Maria I Freiberger, Camila M Clemente, Cesar O Leonetti, Soledad Ravetti, R. Gonzalo Parra, and Diego U Ferreiro.
+Authors: Maria I Freiberger, Camila M Clemente, Cesar O Leonetti, Soledad Ravetti, Diego U Ferreiro and R. Gonzalo Parra.
 
 Please also cite:
 XXXXXX
@@ -20,7 +20,7 @@ Pymol: https://pymol.org/ (sudo apt-get install pymol)
 # Authorship
 ########################################################################################
 
-__credits__ = ["Maria I Freiberger, Camila M Clemente, Cesar O Leonetti, Soledad Ravetti, R. Gonzalo Parra, and Diego U Ferreiro."]
+__credits__ = ["Maria I Freiberger, Camila M Clemente, Cesar O Leonetti, Soledad Ravetti, Diego U Ferreiro and R. Gonzalo Parra."]
 __version__ = "1.0"
 
 ########################################################################################
@@ -83,7 +83,7 @@ def Fstandlden(dfrustra,dchain,pdb,chain):
 		if d==1:
 			d=2
 		else:
-			out.write(spadens[0]+' '+spadens[6]+' ')
+			out.write(spadens[0]+' '+spadens[2]+' '+spadens[6]+' ')
 			auxld=open(dfrustra+'FrustrationData/'+pdb+'_'+chain+'.pdb_mutational','r')
 			for lld in auxld.readlines():
 				spld=lld.split()
@@ -97,13 +97,21 @@ def Fstandlden(dfrustra,dchain,pdb,chain):
 			auxld.close()
 	frust.close()
 	out.close()
-	sort='cd '+dchain+'/;sort -u -r -k2 '+pdb+'_aux.fstdata > '+pdb+'.fstdata;rm '+pdb+'_aux.fstdata'
+	sort='cd '+dchain+'/;sort -u -r -k3 '+pdb+'_aux.fstdata > '+pdb+'.fstdata;rm '+pdb+'_aux.fstdata'
 	os.system(sort)
 ########################################################################################
-def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index threshold (fit) and local density threshold (ldt), pockets directory results, frustraresultdirectory and pdb id
+def FrustaPocket (fitmenor,fitmayor,ldmenor,ldmayor,dchain,dfrustra,pdb,chain): # frustration index threshold (fit) and local density threshold (ldt), pockets directory results, frustraresultdirectory and pdb id
 	vect=[]# empty vector for residues 
 	out=open(dchain+'/'+pdb+'.pockets','w')
 	frust=open(dchain+'/'+pdb+'.fstdata','r')
+	os.system('wc -l '+dchain+'/'+pdb+'.fstdata > aux')
+	aux=open('aux','r')
+	laux=aux.readline()
+	spaux=laux.split()
+	aux.close()
+	cont=float(spaux[0])*0.07
+	if cont >= 25:
+		cont=20
 	pocket=1
 	for linefrus in frust.readlines():
 		d=0
@@ -111,8 +119,11 @@ def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index thresh
 		if spfrust[0] == 'NA':
 			print('NA')
 		else:
-			if len(spfrust) == 3:
-				if float(spfrust[1]) >= fit and float(spfrust[2]) >= ldt:
+			if len(spfrust) == 4:
+				a=0
+				if float(spfrust[3]) == 0 and float(spfrust[2]) >= fitmenor and float(spfrust[2]) >= 0.4 and int(spfrust[1]) >= int(cont):
+					a=1
+				if float(spfrust[2]) >= fitmenor and float(spfrust[2]) <= fitmayor and float(spfrust[3]) >= ldmenor and float(spfrust[3]) <= ldmayor and int(spfrust[1]) >= int(cont) or a ==1:
 					if len(vect) > 0:
 						d=0
 						for i in range (0, len(vect)):
@@ -155,12 +166,12 @@ def FrustaPocket (fit,ldt,dchain,dfrustra,pdb,chain): # frustration index thresh
 								vect=vect+vectaux
 	out.close()
 	frust.close()
-	return pocket
-	
+	return pocket	
 ########################################################################################
 # Creating Directories
 ########################################################################################
 pdb=sys.argv[1]
+pdb=pdb.lower()
 
 pipedir=os.getcwd()+'/'
 direc=pipedir+'job.'+pdb
@@ -174,8 +185,8 @@ os.system(mkdir)
 ########################################################################################
 # Download PDB file
 ########################################################################################
-pathPDB=os.getcwd()+'/'+pdb+'.pdb'
-
+#pathPDB=os.getcwd()+'/'+pdb+'.pdb'
+pathPDB='/home/maria/Documentos/FrustraPocket/PDBs/'+pdb+'.pdb'
 if path.exists(pathPDB):
 	cp='cp '+pathPDB+' '+direc+'/'+pdb+'_aux.pdb'
 	os.system(cp)
@@ -185,7 +196,9 @@ else:
 
 fixpdb='python3 fixpdb.py '+direc+' '+pdb
 os.system(fixpdb)
-#----- FrustrAR -----
+########################################################################################
+# FrustrAR
+########################################################################################
 chains = Chains(direc, pdb)
 dchain=''
 
@@ -201,10 +214,10 @@ for i in range(0,len(chains)):
 	#----- Generating Pockets -----
 	dfrustra=dchain+'/'+pdb+'_'+chains[i]+'.done/'
 	Fstandlden(dfrustra,dchain,pdb,chains[i])
-	pocket=FrustaPocket (0.18,2.8,dchain,dfrustra,pdb,chains[i])
+	pocket=FrustaPocket (0.20,0.65,1,5,dchain,dfrustra,pdb,chains[i])
 	
-	if int(pocket) <= 3:
-		pocket=FrustaPocket (0.2,1,dchain,dfrustra,pdb,chains[i])
+	if int(pocket) <= 2:
+		pocket=FrustaPocket (0.13,0.50,0.22,4.83,dchain,dfrustra,pdb,chains[i])
 
 outpml=open(direc+'/Pockets/VisualizationPockets.pml','w')
 outpml.write('load '+pdb+'.pdb\nshow cartoon, all\n')
@@ -252,7 +265,8 @@ for j in range(0,len(chains)):
 		#print(p)
 		a = np.genfromtxt(p, skip_header=1, usecols=[6, 7, 8])
 		v = a.mean(axis=0)
-		allcenter.write(p+' '+str(v[0])+' '+str(v[1])+' '+str(v[2])+'\n')
+		allcenter.write(sppock[1]+'_'+chains[j]+' '+str(v[0])+' '+str(v[1])+' '+str(v[2])+'\n')
+
 allcenter.close()
 outpml.write('zoom all')
 outpml.close()
@@ -268,7 +282,7 @@ if len(sys.argv) > 2:
 	cplig='cp '+pipedir+lig+'.pdb '+direc+'/'+lig+'.pdb'
 	os.system(cplig)
 
-	pythonpath='/home/XXX/MGLTools-1.5.7rc1/bin/pythonsh'
+	pythonpath='/home/maria/MGLTools-1.5.7rc1/bin/pythonsh'
 	preceptor='cd '+direc+'/;'+pythonpath+' prepare_receptor4.py -A hydrogens -r '+pdb+'_clean.pdb -o '+pdb+'_aux.pdbqt'
 	fixpdbqt='python3 fixpdbqt.py '+direc+' '+pdb
 	pliga='cd '+direc+'/;'+pythonpath+' prepare_ligand4.py -A hydrogens -l '+lig+'.pdb -o '+lig+'_aux.pdbqt'
@@ -284,15 +298,16 @@ if len(sys.argv) > 2:
 	for lines in center.readlines():
 		lines=lines[:-1]
 		splines=lines.split()
-		pdbname=splines[0].split('/')
-		print('Vina Results for pocket:'+pdbname[9])
-		vina='cd '+direc+'/;vina --receptor '+pdb+'.pdbqt --ligand '+lig+'.pdbqt --center_x  '+splines[1]+' --center_y '+splines[2]+' --center_z '+splines[3]+' --size_x 30 --size_y 30 --size_z 30 --out '+pdbname[9]+'_ligand'
+		print('Vina Results for pocket:'+splines[0])
+		vina='cd '+direc+'/;vina --receptor '+pdb+'.pdbqt --ligand '+lig+'.pdbqt --center_x  '+splines[1]+' --center_y '+splines[2]+' --center_z '+splines[3]+' --size_x 30 --size_y 30 --size_z 30 --out '+splines[0]+'_ligand'
 		print(vina)
 		os.system(vina)
-		vhead='cd '+direc+'/;head -2 '+pdbname[9]+'_ligand > aux'
+		vhead='cd '+direc+'/;head -2 '+splines[0]+'_ligand > aux'
 		os.system(vhead)
 		vaux=open(direc+'/aux','r')
 		vline=vaux.readlines()
-		outvina.write(pdbname[9]+' '+vline[1])
+		outvina.write(splines[0]+' '+vline[1])
 	center.close()
 	outvina.close()
+	rm='cd '+direc+';m prepare_receptor4.py prepare_ligand4.py'
+	os.system(rm)
