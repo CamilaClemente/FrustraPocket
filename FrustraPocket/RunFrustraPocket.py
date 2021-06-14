@@ -99,7 +99,7 @@ def Fstandlden(dfrustra,dchain,pdb,chain):
 	sort='cd '+dchain+'/;sort -u -r -k3 '+pdb+'_aux.fstdata > '+pdb+'.fstdata;rm '+pdb+'_aux.fstdata'
 	os.system(sort)
 ########################################################################################
-def FrustaPocket (fitmenor,fitmayor,ldmenor,ldmayor,dchain,dfrustra,pdb,chain): # frustration index threshold (fit) and local density threshold (ldt), pockets directory results, frustraresultdirectory and pdb id
+def FrustaPocket (fitmenor,ldmenor,dchain,dfrustra,pdb,chain): # frustration index threshold (fit) and local density threshold (ldt), pockets directory results, frustraresultdirectory and pdb id
 	vect=[]# empty vector for residues 
 	out=open(dchain+'/'+pdb+'.pockets','w')
 	frust=open(dchain+'/'+pdb+'.fstdata','r')
@@ -120,9 +120,7 @@ def FrustaPocket (fitmenor,fitmayor,ldmenor,ldmayor,dchain,dfrustra,pdb,chain): 
 		else:
 			if len(spfrust) == 4:
 				a=0
-				if float(spfrust[3]) == 0 and float(spfrust[2]) >= fitmenor and float(spfrust[2]) >= 0.4 and int(spfrust[1]) >= int(cont):
-					a=1
-				if float(spfrust[2]) >= fitmenor and float(spfrust[2]) <= fitmayor and float(spfrust[3]) >= ldmenor and float(spfrust[3]) <= ldmayor and int(spfrust[1]) >= int(cont) or a ==1:
+				if float(spfrust[2]) >= fitmenor and float(spfrust[3]) >= ldmenor and int(spfrust[1]) >= int(cont):
 					if len(vect) > 0:
 						d=0
 						for i in range (0, len(vect)):
@@ -213,10 +211,10 @@ for i in range(0,len(chains)):
 	#----- Generating Pockets -----
 	dfrustra=dchain+'/'+pdb+'_'+chains[i]+'.done/'
 	Fstandlden(dfrustra,dchain,pdb,chains[i])
-	pocket=FrustaPocket (0.20,0.65,1,5,dchain,dfrustra,pdb,chains[i])
+	pocket=FrustaPocket (0.18,2.6,dchain,dfrustra,pdb,chains[i])
 	
 	if int(pocket) <= 2:
-		pocket=FrustaPocket (0.13,0.50,0.22,4.83,dchain,dfrustra,pdb,chains[i])
+		pocket=FrustaPocket (0.13,2,dchain,dfrustra,pdb,chains[i])
 
 outpml=open(direc+'/Pockets/VisualizationPockets.pml','w')
 outpml.write('load '+pdb+'.pdb\nshow cartoon, all\n')
@@ -269,6 +267,8 @@ for j in range(0,len(chains)):
 allcenter.close()
 outpml.write('zoom all')
 outpml.close()
+
+### Docking ####
 
 if len(sys.argv) > 2:
 	awk='cd '+direc+'/;awk \'{if ($1 == "ATOM"){print} if ($1=="TER"){print}}\' '+pdb+'.pdb > '+pdb+'_clean.pdb'
