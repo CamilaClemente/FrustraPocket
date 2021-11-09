@@ -223,8 +223,11 @@ cp='cp '+direc+'/'+pdb+'.pdb '+direc+'/Pockets/'+pdb+'.pdb'
 os.system(cp)
 allcenter=open(direc+'/Pockets/Pocket_centerofmass.txt','w')
 
+vectcolor=['blue', 'hotpink','yelloworange', 'lime','sand','purple', 'salmon', 'warmpink', 'yellow', 'lightorange','green', 'splitpea', 'palegreen', 'limon', 'red','wheat', 'magenta',  'pink',  'aquamarine', 'orange', 'brightorange', 'deepolive', 'palecyan', 'lightpink']
+
 for j in range(0,len(chains)):
 	pockets=open(direc+'/'+chains[j]+'/'+pdb+'.pockets','r')
+	color=0
 	for lpock in pockets.readlines():
 		lpock=lpock[:-1]
 		sppock=lpock.split()
@@ -246,7 +249,10 @@ for j in range(0,len(chains)):
 		
 		rm='rm '+direc+'/a'
 		os.system(rm)
-		outpml.write('load '+sppock[1]+'_'+chains[j]+'.pdb\nshow surface,'+sppock[1]+'_'+chains[j]+'\n')
+		if color >=len(vectcolor):
+			color=0
+		outpml.write('load '+sppock[1]+'_'+chains[j]+'.pdb\nshow surface,'+sppock[1]+'_'+chains[j]+'\ncolor '+vectcolor[color]+', '+sppock[1]+'_'+chains[j]+'\n')
+		color+=1
 		for l in range(2, len(sppock)):
 			pdbn=open(direc+'/'+chains[j]+'/'+pdb+'_'+chains[j]+'.done/FrustrationData/'+pdb+'_'+chains[j]+'.pdb','r')
 			for lpdb in pdbn.readlines():
@@ -262,7 +268,7 @@ for j in range(0,len(chains)):
 		#print(p)
 		a = np.genfromtxt(p, skip_header=1, usecols=[6, 7, 8])
 		v = a.mean(axis=0)
-		allcenter.write(sppock[1]+'_'+chains[j]+' '+str(v[0])+' '+str(v[1])+' '+str(v[2])+'\n')
+		allcenter.write(p+' '+str(v[0])+' '+str(v[1])+' '+str(v[2])+'\n')
 
 allcenter.close()
 outpml.write('zoom all')
@@ -295,22 +301,23 @@ if len(sys.argv) > 2:
 	os.system('perl eboxsize.pl '+direc+'/'+lig+'.pdbqt > grid')
 	grid=open('grid','r')
 	lgrid=grid.readline()
-	gridsize=lgrid[:-1]
+	gridsize=float(lgrid[:-1]) + 3
 	grid.close()
 	center=open(direc+'/Pockets/Pocket_centerofmass.txt','r')
 	outvina=open(direc+'/VinaResults.txt','w')
 	for lines in center.readlines():
 		lines=lines[:-1]
 		splines=lines.split()
+		id_pocket=splines[0].split('/')
 		print('Vina Results for pocket:'+splines[0])
-		vina='cd '+direc+'/;vina --receptor '+pdb+'.pdbqt --ligand '+lig+'.pdbqt --center_x  '+splines[1]+' --center_y '+splines[2]+' --center_z '+splines[3]+' --size_x '+gridsize+' --size_y '+gridsize+' --size_z '+gridsize+' --out '+splines[0]+'_ligand'
+		vina='cd '+direc+'/;vina --receptor '+pdb+'.pdbqt --ligand '+lig+'.pdbqt --center_x  '+splines[1]+' --center_y '+splines[2]+' --center_z '+splines[3]+' --size_x '+str(gridsize)+' --size_y '+str(gridsize)+' --size_z '+str(gridsize)+' --out '+splines[0]+'_ligand'
 		print(vina)
 		os.system(vina)
 		vhead='cd '+direc+'/;head -2 '+splines[0]+'_ligand > aux'
 		os.system(vhead)
 		vaux=open(direc+'/aux','r')
 		vline=vaux.readlines()
-		outvina.write(splines[0]+' '+vline[1])
+		outvina.write(id_pocket[6]+' '+vline[1])
 	center.close()
 	outvina.close()
 	rm='cd '+direc+';m prepare_receptor4.py prepare_ligand4.py'
