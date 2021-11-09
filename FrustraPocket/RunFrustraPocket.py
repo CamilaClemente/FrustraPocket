@@ -320,5 +320,5 @@ if len(sys.argv) > 2:
 		outvina.write(id_pocket[6]+' '+vline[1])
 	center.close()
 	outvina.close()
-	rm='cd '+direc+';m prepare_receptor4.py prepare_ligand4.py'
+	rm='cd '+direc+';rm prepare_receptor4.py prepare_ligand4.py'
 	os.system(rm)
