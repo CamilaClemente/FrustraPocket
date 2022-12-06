@@ -1,6 +1,6 @@
 print("""
 FrustraPocket: A protein–ligand binding site predictor using frustration
-Authors: Maria I Freiberger, Camila M Clemente, Cesar O Leonetti, Soledad Ravetti, Diego U Ferreiro and R. Gonzalo Parra.
+Authors: Freiberger MI, Clemente CM, Valero E, Pombo JG, Leonetti CO, Ravetti S & Ferreiro DU.
 
 Please also cite:
 XXXXXX
