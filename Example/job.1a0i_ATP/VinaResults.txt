@@ -1,7 +1,0 @@
-1_A REMARK VINA RESULT:      -6.2      0.000      0.000
-2_A REMARK VINA RESULT:      -9.0      0.000      0.000
-3_A REMARK VINA RESULT:      -8.8      0.000      0.000
-4_A REMARK VINA RESULT:      -6.6      0.000      0.000
-5_A REMARK VINA RESULT:      -7.9      0.000      0.000
-6_A REMARK VINA RESULT:      -6.4      0.000      0.000
-7_A REMARK VINA RESULT:      -6.4      0.000      0.000
