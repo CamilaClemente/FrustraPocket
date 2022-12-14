@@ -6,6 +6,18 @@ We highlight that the important aspect of this pipeline is that it detects pocke
 Tools required to predict protein-ligand and catalytic sites (1):
 FrustratometerR: https://github.com/proteinphysiologylab/frustratometeR 
 
+Python libraries:
+
+numpy
+tensorflow
+pandas
+pickle
+sklearn
+seaborn
+matplotlib
+collections
+xgboost
+
 For visualization:
 Pymol: https://pymol.org/ (sudo apt-get install pymol)
 	
