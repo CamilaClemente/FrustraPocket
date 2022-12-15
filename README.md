@@ -20,8 +20,7 @@ xgboost
 
 For visualization:
 Pymol: https://pymol.org/ (sudo apt-get install pymol)
-	
-	
+		
 The input files are: a PDBId 
 
 The pipeline is code in python3. 
