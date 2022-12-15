@@ -40,7 +40,7 @@ def split_pdb(pdbId,jobID,chains=[]):#split the pdbs into chains and return a ve
 	pdb.close()
 	return chains
 	
-def Frustra_PDBs(jobID):# frustration calculation of thr pdbs
+def Frustra_PDBs(jobID):# frustration calculation of the pdbs
 	frustra=open(jobID+'/Frustra.r','w')
 	directory=os.getcwd()+'/'+jobID+'/'
 	frustra.write('library(frustratometeR)\nPdbsDir <- \"'+directory+'Frustration/\"\nResultsDir <- \"'+directory+'Frustration/FrustrationResults/\"\ndir_frustration(PdbsDir = PdbsDir, Mode = \"mutational\", ResultsDir = ResultsDir)')
